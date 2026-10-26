@@ -1,0 +1,812 @@
+{
+  "deck": "Shame: The Game",
+  "version": "1.1",
+  "date": "2026-10-25",
+  "status": "Approved by Paul 2026-10-25. v1 card names and art, corrected copy.",
+  "spread": {
+    "worth": 1,
+    "shame": 2,
+    "activation": 1
+  },
+  "note": "Live deck for the Oct 31 testers and the Nov 8 retreat. The seven v2-only Shame cards (Cracked Vessel, Divergent Mask, Ouroboros, Imposed Chain, Shipwreck Captain, Stained-Glass Prison, Ill-Fitting Armor) live in stg-cards-v2.0.json as the planned expansion.",
+  "note_on_engine_fields": "engine.avoid and engine.must_not govern what the AI reading engine writes. Card copy may name these ideas in order to decline them (for example, 'does not ask you to forgive anyone').",
+  "cards": [
+    {
+      "id": "shame-13",
+      "type": "shame",
+      "name": "The Chameleon of Emotions",
+      "theme": "Hidden or disguised shame",
+      "origin": "v1 card, rewritten 2026-10-25",
+      "art_status": "v1 file received 2026-10-25 (art/v1/shame-13.png, 897x1497, white card, rounded corners)",
+      "sensitivity": "standard",
+      "status": "approved",
+      "copy": "Shame is rarely the feeling we notice first. Like a chameleon, it takes on the color of whatever is nearby: it can look like irritation, numbness, perfectionism, a sudden urge to hide, or anger at someone else. Because it changes color so easily, it can go unnamed for years. This card invites you to look beneath the feeling that is easiest to see and ask what might be underneath it. You don't need to catch the chameleon all at once. Noticing the moment its colors shift is a start.",
+      "engine": {
+        "evidence": "Shame often goes unacknowledged (Scheff) and shows up as withdrawal, avoidance, attacking oneself or attacking others (Nathanson): Moderate as theory.",
+        "must_not": [
+          "Tell the player that what they feel is really shame",
+          "Name mental-health conditions such as depression or anxiety"
+        ],
+        "prefer": [
+          "what might be underneath",
+          "the color it takes on"
+        ],
+        "avoid": [
+          "you are actually feeling shame",
+          "repressed",
+          "depression",
+          "anxiety disorder"
+        ]
+      },
+      "flags": [],
+      "order": 1
+    },
+    {
+      "id": "shame-14",
+      "type": "shame",
+      "name": "The Invisible Chain",
+      "theme": "Shame tied to past mistakes and regret",
+      "origin": "v1 card, rewritten 2026-10-25",
+      "art_status": "v1 file received 2026-10-25 (art/v1/shame-14.png, 897x1497, white card, rounded corners)",
+      "sensitivity": "standard",
+      "status": "approved",
+      "copy": "Some chains can't be seen, but you feel their weight. This one is forged from past mistakes, regrets, and moments you wish you could take back, and it can quietly keep you from new chances and closer connections. This card invites you to examine the links one at a time. Some may point to a real harm that calls for repair, and repair can be a way forward. Others may be old judgments you have carried far longer than the mistake deserved. Telling the two apart is how the chain begins to loosen.",
+      "engine": {
+        "evidence": "Shame focuses on the whole self, guilt on the act (Tangney): Moderate to Strong. Shame can motivate repair when repair seems possible (Leach and Cidam): Moderate.",
+        "must_not": [
+          "Absolve the player of real harm without room for accountability",
+          "Promise freedom from the past"
+        ],
+        "prefer": [
+          "examine the links one at a time",
+          "repair, where repair is possible"
+        ],
+        "avoid": [
+          "shame-free",
+          "break free forever",
+          "forgive yourself"
+        ]
+      },
+      "flags": [
+        "Chain imagery also appears in the Worth card The Breaker of Chains. Readings that pair them should treat the Worth card as the response to this one, not a repeat."
+      ],
+      "order": 2
+    },
+    {
+      "id": "shame-15",
+      "type": "shame",
+      "name": "The Mountain of Self-Doubt",
+      "theme": "Self-doubt and self-imposed limits",
+      "origin": "v1 card, rewritten 2026-10-25",
+      "art_status": "v1 file received 2026-10-25 (art/v1/shame-15.png, 897x1497, white card, rounded corners)",
+      "sensitivity": "standard",
+      "status": "approved",
+      "copy": "Self-doubt can rise like a mountain between where you are and where you want to be. Its slopes are built from old messages, past setbacks, and the habit of measuring yourself against others. Looking up from the bottom, the summit can seem impossibly far away. This card does not ask you to conquer the mountain in one climb. It invites you to notice which voices built it, which of their claims still hold up, and what one small step on the path might look like. A route is easier to find once you can see the ground in front of you.",
+      "engine": {
+        "evidence": "Gap between actual and ideal self (self-discrepancy theory): established theory. Shame-specific evidence: Emerging.",
+        "must_not": [
+          "Promise confidence or success",
+          "Assume the player experienced childhood trauma"
+        ],
+        "prefer": [
+          "which voices built it",
+          "one small step"
+        ],
+        "avoid": [
+          "conquer",
+          "summit of success",
+          "believe in yourself"
+        ]
+      },
+      "flags": [],
+      "order": 3
+    },
+    {
+      "id": "shame-16",
+      "type": "shame",
+      "name": "The Shame Storm",
+      "theme": "Overwhelming waves of shame",
+      "origin": "v1 card, rewritten 2026-10-25",
+      "art_status": "v1 file received 2026-10-25 (art/v1/shame-16.png, 897x1497, white card, rounded corners)",
+      "sensitivity": "standard",
+      "status": "approved",
+      "copy": "Sometimes shame arrives like a storm: sudden, loud, and all-consuming. Thoughts race, the body tightens, and it becomes hard to think clearly or see past the next few minutes. In the middle of it, the storm can feel permanent. This card invites you to recognize the storm while it is happening, and to remember that storms pass. It asks what helps you find shelter: slowing down, stepping away, or reaching for someone steady. You don't have to steer through every storm alone, and you don't have to fix anything while the wind is still blowing.",
+      "engine": {
+        "evidence": "Shame brings intense, global distress and an urge to withdraw: Moderate.",
+        "must_not": [
+          "Minimize the distress",
+          "Promise that clarity or calm will follow",
+          "Prescribe breathing or grounding techniques as a fix"
+        ],
+        "prefer": [
+          "storms pass",
+          "someone steady"
+        ],
+        "avoid": [
+          "calm down",
+          "just breathe",
+          "lighthouse"
+        ]
+      },
+      "flags": [
+        "The v1 copy called this card 'a lighthouse', which collided with the Worth card The Lighthouse of Triumph. Removed."
+      ],
+      "order": 4
+    },
+    {
+      "id": "shame-17",
+      "type": "shame",
+      "name": "The Shame Octopus",
+      "theme": "Pervasive shame reaching into many areas of life",
+      "origin": "v1 card, rewritten 2026-10-25",
+      "art_status": "v1 file re-exported 2026-10-25 (art/v1/shame-17.png)",
+      "sensitivity": "standard",
+      "status": "approved",
+      "copy": "Shame can be like an octopus, reaching quietly into many parts of life at once: relationships, work, creativity, how you see yourself. It can also cloud the water, the way comparison, social media, and cultural pressure can make it hard to see clearly. Left unnamed, it can pull you away from the people who might help. This card invites you to trace its reach: which parts of your life does it touch, and which does it leave alone? Naming each arm can make the whole creature feel less overwhelming. For many people, connection with others is part of loosening its grip.",
+      "engine": {
+        "evidence": "Shame is pervasive and linked to withdrawal and isolation: Moderate. Social comparison as a trigger: Moderate.",
+        "must_not": [
+          "Claim that social media causes shame",
+          "Suggest the player is consumed by shame in every area of life"
+        ],
+        "prefer": [
+          "trace its reach",
+          "which parts it leaves alone"
+        ],
+        "avoid": [
+          "toxic",
+          "social media is poison",
+          "drowning"
+        ]
+      },
+      "flags": [],
+      "order": 5
+    },
+    {
+      "id": "shame-18",
+      "type": "shame",
+      "name": "The Locked Door",
+      "theme": "Shame of exclusion and not belonging",
+      "origin": "v1 card, rewritten 2026-10-25",
+      "art_status": "v1 file received 2026-10-25 (art/v1/shame-18.png, 897x1497, white card, rounded corners)",
+      "sensitivity": "standard",
+      "status": "approved",
+      "copy": "A locked door can mean being kept out: of a group, a family, a workplace, a community. The shame of exclusion often turns an outside barrier into an inside verdict, as if being shut out proves you didn't belong. This card invites you to look at both sides of the door. Who locked it, and why? What did being on the outside cost you? And which doors, now or in the future, might open toward people who would welcome you as you are? Being excluded says something about the room. It does not settle your worth.",
+      "engine": {
+        "evidence": "Ostracism is aversive even in minimal laboratory forms: Moderate. Structural exclusion and stigma: Moderate.",
+        "must_not": [
+          "Suggest the exclusion was deserved",
+          "Guarantee acceptance elsewhere"
+        ],
+        "prefer": [
+          "both sides of the door",
+          "an outside barrier, not an inside verdict"
+        ],
+        "avoid": [
+          "their loss",
+          "find your tribe"
+        ]
+      },
+      "flags": [
+        "Overlaps the Activation card The Rejection Wound. Readings that pair them should treat this card as the lasting shame and the Activation card as the moment that sets it off."
+      ],
+      "order": 6
+    },
+    {
+      "id": "shame-01",
+      "type": "shame",
+      "name": "The Generational Shame Labyrinth",
+      "theme": "Generational and family shame",
+      "origin": "v1 card, rewritten",
+      "art_status": "v1 file received 2026-10-25 (art/v1/shame-01.png, 897x1497, white card, rounded corners)",
+      "sensitivity": "standard",
+      "copy": "Some shame arrives before we do. It is passed down through family rules, silences, and the things no one was allowed to say, and it is reinforced by the cultures and histories that surround a family. Like a labyrinth, its walls were built long ago, and its turns can feel like the only paths there are. This card invites you to trace the walls: which rules were spoken, which were only felt, and who was expected to keep them. Naming what was inherited is not the same as blaming the people who passed it on. It is a way of seeing the maze clearly enough to choose a different turn, for yourself and for whoever comes after you.",
+      "engine": {
+        "evidence": "Psychosocial transmission through family scripts and parenting: Moderate. Epigenetic inheritance of trauma in humans: Contested.",
+        "must_not": [
+          "Say or imply that trauma or shame is in the player's genes or DNA",
+          "Assign blame to a living parent or relative"
+        ],
+        "prefer": [
+          "inherited rules",
+          "what the family could not say"
+        ],
+        "avoid": [
+          "trauma in your DNA",
+          "cellular memory",
+          "generational curse"
+        ]
+      },
+      "flags": [],
+      "status": "approved",
+      "order": 7
+    },
+    {
+      "id": "shame-02",
+      "type": "shame",
+      "name": "The Racial Shame Quicksand",
+      "theme": "Racial shame imposed by racism and stigma",
+      "origin": "v1 card, rewritten (Option A, approved 2026-10-11)",
+      "art_status": "v1 file received 2026-10-25 (art/v1/shame-02.png, 897x1497, white card, rounded corners)",
+      "sensitivity": "elevated",
+      "copy": "Racial shame is quicksand you did not step into. It was poured around you and your community by discriminatory policies, biased institutions, and stereotypes repeated until they felt like truth. The pull is real, and struggling alone can make it feel stronger. This card does not ask you to climb out by yourself or to prove your worth to anyone. It invites you to name where the weight came from, to set down judgments that were never yours to carry, and to reach for the people, histories, and communities who have found solid ground before you. The shame belongs to the forces that imposed it. What belongs to you is your heritage, your pride, and the right to define both on your own terms.",
+      "engine": {
+        "evidence": "Harm of discrimination and internalized racism: Moderate. Racial shame as a distinct construct: Emerging.",
+        "must_not": [
+          "Ask the player to explain their race's experience",
+          "Offer colorblind reassurance",
+          "Question or debate whether an experience of racism was real",
+          "Suggest the player's response to racism is the problem"
+        ],
+        "prefer": [
+          "being made to carry another person's judgment"
+        ],
+        "avoid": [
+          "overcome",
+          "you are more than your race",
+          "racial guilt"
+        ]
+      },
+      "flags": [
+        "Players reckoning with racism they benefited from have no matching card in this deck; see the decisions-log parking lot."
+      ],
+      "status": "approved",
+      "order": 8
+    },
+    {
+      "id": "shame-03",
+      "type": "shame",
+      "name": "The Sexual Shame Cage",
+      "theme": "Shame about sexuality, desire, and sexual identity",
+      "origin": "v1 card, rewritten",
+      "art_status": "v1 file received 2026-10-25 (art/v1/shame-03.png, 897x1497, white card, rounded corners)",
+      "sensitivity": "elevated",
+      "copy": "Sexual shame is a cage built from other people's rules: religious, cultural, familial, or picked up in locker rooms and classrooms. Its bars can be made of silence, of jokes, of warnings, or of the message that some desires and identities should stay out of sight. Whatever built it, the cage was not your design. This card invites you to notice the shape of the bars: whose voices you hear when desire or identity comes up, and which parts of yourself learned to hide. You set the pace here. Looking at the cage does not require opening every door at once.",
+      "engine": {
+        "evidence": "Minority stress and structural stigma: Moderate.",
+        "must_not": [
+          "Probe for sexual detail",
+          "Suggest an orientation, identity, or consensual behavior should change",
+          "Treat disclosure as expected or required"
+        ],
+        "prefer": [
+          "the cage was built by others' rules"
+        ],
+        "avoid": [
+          "sexual healing",
+          "unlearn",
+          "embrace your sexuality",
+          "liberate your authentic sexual self"
+        ]
+      },
+      "flags": [],
+      "status": "approved",
+      "order": 9
+    },
+    {
+      "id": "shame-04",
+      "type": "shame",
+      "name": "The Shadow of Financial Shame",
+      "theme": "Financial and class shame",
+      "origin": "v1 card, rewritten",
+      "art_status": "v1 file received 2026-10-25 (art/v1/shame-04.png, 897x1497, white card, rounded corners)",
+      "sensitivity": "standard",
+      "copy": "Money carries more than numbers. Debt, a lean childhood, a career that stalled, or a climb into a world where you never quite feel you belong can all cast a long shadow over how you see yourself. This shame often lives in secrecy: the bill left unopened, the story quietly edited, the comparison you can't stop making. This card invites you to step into the light long enough to separate two things the shadow keeps fused together: what you have, and what you are worth. It does not ask you to fix your finances. It asks whose measure of success you have been living under.",
+      "engine": {
+        "evidence": "Largely qualitative; stigma and class-mobility research: Emerging to Moderate.",
+        "must_not": [
+          "Give financial advice",
+          "Moralize about money or spending",
+          "Treat poverty shame and class-mobility shame as the same experience"
+        ],
+        "prefer": [
+          "the cost of being seen to not have"
+        ],
+        "avoid": [
+          "abundance mindset",
+          "scarcity mindset"
+        ]
+      },
+      "flags": [],
+      "status": "approved",
+      "order": 10
+    },
+    {
+      "id": "shame-19",
+      "type": "shame",
+      "name": "The Hall of Distorted Mirrors",
+      "theme": "Body image and appearance shame",
+      "origin": "v1 card, rewritten 2026-10-25",
+      "art_status": "v1 file received 2026-10-25 (art/v1/shame-19.png, 897x1497, white card, rounded corners)",
+      "sensitivity": "elevated",
+      "status": "approved",
+      "copy": "Walk through a hall of distorted mirrors and every reflection exaggerates something: a curve, a line, a sign of age, a change you didn't choose. Beauty standards, comparison, and years of commentary about bodies can work the same way, bending how you see yourself until the distortion feels like the truth. This card invites you to notice whose mirrors these are and where their measurements came from. It doesn't ask you to love every reflection. It asks whether the mirror is telling you the truth, and what it might be like to look at yourself with a little less judgment.",
+      "engine": {
+        "evidence": "Body-image shame: Emerging. Compassion-focused work on body-weight shame: one small trial.",
+        "must_not": [
+          "Comment on the player's body",
+          "Give diet, weight, food or exercise advice, numbers or targets",
+          "Name conditions such as body dysmorphia or eating disorders",
+          "Use body positivity as an instruction"
+        ],
+        "prefer": [
+          "whose mirrors these are",
+          "a little less judgment"
+        ],
+        "avoid": [
+          "love your body",
+          "body positivity",
+          "dysmorphia",
+          "flaws"
+        ]
+      },
+      "flags": [
+        "The v1 copy named body dysmorphia. Removed: the app must not name conditions."
+      ],
+      "order": 11
+    },
+    {
+      "id": "shame-05",
+      "type": "shame",
+      "name": "The Caregiver's Cloak",
+      "theme": "Shame in caregiving and responsibility",
+      "origin": "v1 card, rewritten",
+      "art_status": "v1 file received 2026-10-25 (art/v1/shame-05.png, 897x1497, white card, rounded corners)",
+      "sensitivity": "standard",
+      "copy": "This cloak is worn by those who hold others up: parents, partners, adult children, caregivers, and leaders whose decisions carry other people's livelihoods. It is woven from love and duty, and also from the feelings caregivers are rarely allowed to say out loud: exhaustion, resentment, the private wish for a life with fewer demands. Shame tells you those feelings make you a failure. This card invites you to feel the full weight of the cloak and to notice that wanting relief does not cancel your love. It asks who, if anyone, holds you while you hold everyone else.",
+      "engine": {
+        "evidence": "Courtesy or affiliate stigma among caregivers: Emerging; cross-sectional, often non-Western samples.",
+        "must_not": [
+          "Reframe resentment as pathology",
+          "Reframe resentment as virtue"
+        ],
+        "prefer": [
+          "the cloak of being the one who copes"
+        ],
+        "avoid": [
+          "self-care slogans",
+          "you can't pour from an empty cup"
+        ]
+      },
+      "flags": [],
+      "status": "approved",
+      "order": 12
+    },
+    {
+      "id": "worth-01",
+      "type": "worth",
+      "name": "The Auditor of Shadows",
+      "theme": "Noticing and naming",
+      "origin": "v1 card, rewritten",
+      "art_status": "v1 file received 2026-10-25 (art/v1/worth-01.png, 897x1497, white card, rounded corners)",
+      "sensitivity": "standard",
+      "copy": "The Auditor is patient, fair, and unafraid of dark corners. This card invites you to take an honest inventory: where shame shows up in your life, what sets it off, and what it tells you about yourself. The aim is not to judge the ledger, only to read it clearly. For some people, simply putting a feeling into words can soften its grip a little. Naming a shadow does not make it disappear, but it turns a vague dread into something you can see, and what you can see, you can begin to work with.",
+      "engine": {
+        "evidence": "Affect labeling reduces reactivity in laboratory studies: Emerging for real-world shame.",
+        "must_not": [
+          "Treat naming as resolution"
+        ],
+        "prefer": [
+          "take an inventory",
+          "read the ledger"
+        ],
+        "avoid": [
+          "once you name it, it loses its power"
+        ]
+      },
+      "flags": [],
+      "status": "approved",
+      "order": 1
+    },
+    {
+      "id": "worth-02",
+      "type": "worth",
+      "name": "The Torch of Intent",
+      "theme": "Values and intention",
+      "origin": "v1 card, rewritten",
+      "art_status": "v1 file received 2026-10-25 (art/v1/worth-02.png, 897x1497, white card, rounded corners)",
+      "sensitivity": "standard",
+      "copy": "Before any path, there is a reason to walk it. The Torch of Intent asks you to name what matters to you, the values you want to move toward, and to let that be the light you carry. An intention is not a performance or a promise to be perfect. It is a direction you can return to when the way gets dark or confusing. This card invites you to put your intention into a few plain words, in your own language, that you could still believe on a hard day.",
+      "engine": {
+        "evidence": "Self-affirmation theory and values work in ACT: Moderate.",
+        "must_not": [
+          "Turn values into a performance or personal brand"
+        ],
+        "prefer": [
+          "a direction you can return to"
+        ],
+        "avoid": [
+          "manifest",
+          "your best self"
+        ]
+      },
+      "flags": [],
+      "status": "approved",
+      "order": 2
+    },
+    {
+      "id": "worth-03",
+      "type": "worth",
+      "name": "The Compassionate Gardener",
+      "theme": "Self-compassion",
+      "origin": "v1 card, rewritten",
+      "art_status": "v1 file received 2026-10-25 (art/v1/worth-03.png, 897x1497, white card, rounded corners)",
+      "sensitivity": "standard",
+      "copy": "Gardens are not shamed into growing. The Compassionate Gardener tends what is there with patience: watering what is struggling, accepting both sunshine and storm, and not expecting bloom on demand. This card invites you to speak to yourself the way you would speak to someone you care about who is having a hard time. If kindness toward yourself feels uncomfortable or even threatening, that is common, and it is worth noticing gently rather than forcing. Compassion here does not mean excusing everything. It means tending yourself well enough to look honestly at what needs care.",
+      "engine": {
+        "evidence": "Self-compassion interventions lower self-criticism and depression: Moderate to Strong. Compassion-focused therapy originates in shame work.",
+        "must_not": [
+          "Use compassion to bypass accountability",
+          "Push self-kindness on a player who finds it aversive"
+        ],
+        "prefer": [
+          "tending",
+          "the way you would speak to a friend"
+        ],
+        "avoid": [
+          "love yourself",
+          "you are perfect as you are"
+        ]
+      },
+      "flags": [],
+      "status": "approved",
+      "order": 3
+    },
+    {
+      "id": "worth-04",
+      "type": "worth",
+      "name": "The Breaker of Chains",
+      "theme": "Opposite action",
+      "origin": "v1 card, rewritten",
+      "art_status": "v1 file received 2026-10-25 (art/v1/worth-04.png, 897x1497, white card, rounded corners)",
+      "sensitivity": "standard",
+      "copy": "The Breaker of Chains is about action. Shame urges us to hide, shrink, and avoid. When that urge does not fit the facts of the situation, acting against it, gently and deliberately, can loosen its hold: showing up instead of withdrawing, speaking instead of going silent. This card invites you to name one small, concrete step that moves against the pull of shame. First, though, it asks an honest question: does this shame point to something you actually did that needs repair? If so, repair is the step. If not, the chain may be one you are ready to test.",
+      "engine": {
+        "evidence": "DBT opposite action: Emerging (pilot evidence). Contraindicated when shame fits the facts.",
+        "must_not": [
+          "Recommend acting against shame without first checking whether it fits the facts"
+        ],
+        "prefer": [
+          "one small, concrete step",
+          "check the fit"
+        ],
+        "avoid": [
+          "face your fears",
+          "just do it"
+        ]
+      },
+      "flags": [],
+      "status": "approved",
+      "order": 4
+    },
+    {
+      "id": "worth-05",
+      "type": "worth",
+      "name": "The Adaptive Warrior",
+      "theme": "Planning for setbacks",
+      "origin": "v1 card, rewritten",
+      "art_status": "v1 file received 2026-10-25 (art/v1/worth-05.png, 897x1497, white card, rounded corners)",
+      "sensitivity": "standard",
+      "copy": "Every path has setbacks. The Adaptive Warrior does not pretend otherwise; it plans for them. This card invites you to think ahead: what situations tend to set off your shame, what you usually do next, and what you might try instead. A setback is information, not proof that you have failed or that the effort was pointless. The warrior's strength is not in never falling, but in knowing in advance how to get back up, and who to call when that happens.",
+      "engine": {
+        "evidence": "Relapse-prevention planning: supported for substance use; effect size not extracted.",
+        "must_not": [
+          "Treat a setback as proof of failure"
+        ],
+        "prefer": [
+          "a setback is information",
+          "plan ahead"
+        ],
+        "avoid": [
+          "no excuses",
+          "failure is not an option"
+        ]
+      },
+      "flags": [],
+      "status": "approved",
+      "order": 5
+    },
+    {
+      "id": "worth-06",
+      "type": "worth",
+      "name": "The Phoenix of Growth",
+      "theme": "Growth after adversity (optional)",
+      "origin": "v1 card, rewritten",
+      "art_status": "v1 file received 2026-10-25 (art/v1/worth-06.png, 897x1497, white card, rounded corners)",
+      "sensitivity": "standard",
+      "copy": "The phoenix rises from its own ashes, and some people do find that hard experiences, over time, reshaped them in ways they value. This card honors that possibility without demanding it. Growth is not the price of suffering, and you do not owe anyone a redemption story. If something new has emerged from what you have been through, this card invites you to name it. If it hasn't, or if it still feels like ash, that is a legitimate place to be. The phoenix can also simply rest.",
+      "engine": {
+        "evidence": "Posttraumatic growth: Contested; retrospective measures are problematic.",
+        "must_not": [
+          "State or imply the player should grow from adversity",
+          "Present growth as the expected outcome",
+          "Treat an unresolved story as incomplete"
+        ],
+        "prefer": [
+          "if something new has emerged",
+          "a legitimate place to be"
+        ],
+        "avoid": [
+          "everything happens for a reason",
+          "stronger than ever",
+          "rise above"
+        ]
+      },
+      "flags": [],
+      "status": "approved",
+      "order": 6
+    },
+    {
+      "id": "worth-07",
+      "type": "worth",
+      "name": "The Sentinel of Resilience",
+      "theme": "Resilience and existing resources",
+      "origin": "v1 card, rewritten",
+      "art_status": "v1 file received 2026-10-25 (art/v1/worth-07.png, 897x1497, white card, rounded corners)",
+      "sensitivity": "standard",
+      "copy": "The Sentinel stands watch, steady, because it has stood watch before. Most people carry more resilience than they credit themselves with: ways of coping, people they lean on, skills learned the hard way. This card invites you to take stock of yours. What has helped you through difficult stretches before? What would you want within reach next time? Resilience is not the absence of distress, and needing help is not a failure of the watch. Even sentinels are relieved at the end of a shift.",
+      "engine": {
+        "evidence": "Most people show stable, low-distress trajectories after potential trauma: Moderate.",
+        "must_not": [
+          "Present resilience as a demand",
+          "Pathologize distress"
+        ],
+        "prefer": [
+          "take stock",
+          "what has helped before"
+        ],
+        "avoid": [
+          "bounce back",
+          "toughen up"
+        ]
+      },
+      "flags": [],
+      "status": "approved",
+      "order": 7
+    },
+    {
+      "id": "worth-08",
+      "type": "worth",
+      "name": "The Lighthouse of Triumph",
+      "theme": "A symbolic personal artifact",
+      "origin": "v1 card, rewritten",
+      "art_status": "v1 file received 2026-10-25 (art/v1/worth-08.png, 897x1497, white card, rounded corners)",
+      "sensitivity": "standard",
+      "copy": "A lighthouse does not calm the sea; it marks a way through it. This card invites you to make or choose a small personal artifact that marks something you have come through, or are still moving through: a few written lines, a drawing, a song, an object, a photograph. It does not have to be beautiful or finished. It is a reminder you can hold, something to look at on a dark night that says: I have been here before, and this is how I found my way.",
+      "engine": {
+        "evidence": "Art-making and therapeutic documents: Emerging; small studies.",
+        "must_not": [
+          "Treat the artifact as a substitute for the reflection itself",
+          "Require the artifact to represent a finished victory"
+        ],
+        "prefer": [
+          "a reminder you can hold",
+          "still moving through"
+        ],
+        "avoid": [
+          "victory over shame",
+          "conquered"
+        ]
+      },
+      "flags": [
+        "Name check: 'Triumph' implies a finished victory, which the knowledge base cautions against. The copy softens it; consider whether the name should change too."
+      ],
+      "status": "approved",
+      "order": 8
+    },
+    {
+      "id": "activation-01",
+      "type": "activation",
+      "name": "The Critic's Gaze",
+      "theme": "Criticism",
+      "origin": "v1 card, rewritten",
+      "art_status": "v1 art on cream card stock, approved as is 2026-10-25 (art/v1/activation-01.png)",
+      "sensitivity": "standard",
+      "copy": "Someone's judgment lands, and suddenly it feels like a verdict on your whole self. The Critic's Gaze is the moment when another person's criticism, spoken or only imagined, reaches past what you did and seems to say something about who you are. This card invites you to notice the sentence that landed and to ask two questions: is there something in it worth learning from, and is any of it more about the critic than about you? Both can be true at once.",
+      "engine": {
+        "evidence": "Shame-prone people respond to criticism with withdrawal or anger: Moderate.",
+        "must_not": [
+          "Role-play criticism at the player"
+        ],
+        "prefer": [
+          "the sentence that landed"
+        ],
+        "avoid": [
+          "toxic people",
+          "haters"
+        ]
+      },
+      "flags": [],
+      "status": "approved",
+      "order": 9
+    },
+    {
+      "id": "activation-02",
+      "type": "activation",
+      "name": "The Social Blunder",
+      "theme": "Social missteps and embarrassment",
+      "origin": "v1 card, rewritten",
+      "art_status": "v1 art on cream card stock, approved as is 2026-10-25 (art/v1/activation-02.png)",
+      "sensitivity": "standard",
+      "copy": "The wrong word at the wrong moment. The joke that fell flat. The name you forgot. Social blunders can replay in the mind for years, though most of the time they are embarrassment, a brief and very human sting, rather than proof that something is wrong with you. This card invites you to look at the moment with a little lightness, and to ask whether it truly says anything about your worth or has simply been replaying louder than it deserves.",
+      "engine": {
+        "evidence": "Embarrassment differs from shame in intensity and duration: Moderate.",
+        "must_not": [
+          "Treat every blunder as a shame event"
+        ],
+        "prefer": [
+          "a brief and very human sting",
+          "lightness"
+        ],
+        "avoid": [
+          "cringe",
+          "humiliating"
+        ]
+      },
+      "flags": [],
+      "status": "approved",
+      "order": 10
+    },
+    {
+      "id": "activation-03",
+      "type": "activation",
+      "name": "The Perfectionist's Burden",
+      "theme": "Perfectionism",
+      "origin": "v1 card, rewritten",
+      "art_status": "v1 art on cream card stock, approved as is 2026-10-25 (art/v1/activation-03.png)",
+      "sensitivity": "standard",
+      "copy": "Nothing is ever quite enough. The Perfectionist's Burden is the weight of standards so high that every success feels provisional and every flaw feels like exposure. It can look like excellence from the outside, and that is part of its trap. This card does not treat perfectionism as a secret strength. It invites you to notice where the bar came from, what you fear would happen if you lowered it, and what good enough might feel like in one small corner of your life.",
+      "engine": {
+        "evidence": "Perfectionistic concerns relate to psychopathology more than striving; interventions show medium effects: Moderate.",
+        "must_not": [
+          "Frame perfectionism as a flattering or secret virtue"
+        ],
+        "prefer": [
+          "where the bar came from",
+          "good enough"
+        ],
+        "avoid": [
+          "high achiever",
+          "you just care too much"
+        ]
+      },
+      "flags": [],
+      "status": "approved",
+      "order": 11
+    },
+    {
+      "id": "activation-04",
+      "type": "activation",
+      "name": "The Unmet Goal",
+      "theme": "Falling short of a goal",
+      "origin": "v1 card, rewritten",
+      "art_status": "v1 art on cream card stock, approved as is 2026-10-25 (art/v1/activation-04.png)",
+      "sensitivity": "standard",
+      "copy": "You aimed for something and didn't reach it. The Unmet Goal is the gap between where you hoped to be and where you are, and the shame that rushes in to explain the gap as a flaw in you. This card invites you to separate the goal from your worth. What did you actually want? What got in the way? Is the goal still yours, or was it borrowed from someone else's idea of success? A missed mark is a fact about a moment, not a final judgment of a person.",
+      "engine": {
+        "evidence": "Actual-ideal self discrepancy: established theory; shame-specific goal research: Emerging (gap).",
+        "must_not": [
+          "Promise that the goal will be reached next time"
+        ],
+        "prefer": [
+          "a fact about a moment"
+        ],
+        "avoid": [
+          "failure is a stepping stone",
+          "everything happens for a reason"
+        ]
+      },
+      "flags": [],
+      "status": "approved",
+      "order": 12
+    },
+    {
+      "id": "activation-05",
+      "type": "activation",
+      "name": "The Vulnerability Exposed",
+      "theme": "Being seen when you did not choose to be",
+      "origin": "v1 card, rewritten",
+      "art_status": "v1 art on cream card stock, approved as is 2026-10-25 (art/v1/activation-05.png)",
+      "sensitivity": "standard",
+      "copy": "Something you would rather have kept hidden was seen. The Vulnerability Exposed is that moment of being laid open, whether you chose to share or the choice was taken from you. Vulnerability can deepen connection, but only with people who handle it with care, and it is never something you owe anyone. This card invites you to notice how the exposure felt, who responded well and who didn't, and what you have learned about whom you can trust with the parts of yourself that matter most.",
+      "engine": {
+        "evidence": "Shame resilience theory is a grounded-theory study of women: Emerging.",
+        "must_not": [
+          "Reward or praise disclosure",
+          "Present vulnerability as an obligation"
+        ],
+        "prefer": [
+          "a risk you get to choose"
+        ],
+        "avoid": [
+          "vulnerability is strength (as a slogan)",
+          "be brave and share"
+        ]
+      },
+      "flags": [],
+      "status": "approved",
+      "order": 13
+    },
+    {
+      "id": "activation-06",
+      "type": "activation",
+      "name": "The Broken Trust",
+      "theme": "Betrayal",
+      "origin": "v1 card, rewritten",
+      "art_status": "v1 art on cream card stock, approved as is 2026-10-25 (art/v1/activation-06.png)",
+      "sensitivity": "elevated",
+      "copy": "Someone you relied on let you down. Betrayal by a partner, friend, family member, or institution can leave two wounds: the hurt itself, and the shame of having trusted in the first place. This card invites you to notice whether you are blaming yourself for someone else's choice. Trusting was not a flaw in your character; it is part of how people connect. Forgiveness, of them or of yourself, is not required here. The card simply asks what you need now to feel safe enough to trust your own judgment again.",
+      "engine": {
+        "evidence": "Betrayal trauma: Moderate.",
+        "must_not": [
+          "Push forgiveness",
+          "Suggest the player should have seen it coming"
+        ],
+        "prefer": [
+          "someone else's choice"
+        ],
+        "avoid": [
+          "forgive and forget",
+          "red flags you missed"
+        ]
+      },
+      "flags": [],
+      "status": "approved",
+      "order": 14
+    },
+    {
+      "id": "activation-07",
+      "type": "activation",
+      "name": "The Unspoken Secret",
+      "theme": "Secrets and concealment",
+      "origin": "v1 card, rewritten",
+      "art_status": "v1 art on cream card stock, approved as is 2026-10-25 (art/v1/activation-07.png)",
+      "sensitivity": "standard",
+      "copy": "Some truths are heavy to carry alone. The Unspoken Secret is the weight of something hidden: an experience, a part of yourself, a fact about your life that you fear would change how others see you. Secrets can take up a lot of room in the mind. This card does not tell you to reveal anything. Sharing can bring relief with the right person and real harm with the wrong one. It invites you to notice what the secret costs you to keep, and whether there is anyone, now or someday, who could safely hear it.",
+      "engine": {
+        "evidence": "Secrets and rumination: Moderate. Physical-burden effects of secrecy: Contested (failed replication).",
+        "must_not": [
+          "Imply that telling a secret is always beneficial",
+          "Claim secrets have physical effects"
+        ],
+        "prefer": [
+          "who could safely hear it"
+        ],
+        "avoid": [
+          "secrets make you sick",
+          "the truth will set you free"
+        ]
+      },
+      "flags": [],
+      "status": "approved",
+      "order": 15
+    },
+    {
+      "id": "activation-08",
+      "type": "activation",
+      "name": "The Rejection Wound",
+      "theme": "Rejection and exclusion",
+      "origin": "v1 card, rewritten",
+      "art_status": "v1 art on cream card stock, approved as is 2026-10-25 (art/v1/activation-08.png)",
+      "sensitivity": "standard",
+      "copy": "Being left out, turned down, or turned away. Rejection hurts in a way almost everyone recognizes, and shame often turns it into a story about your worth: they didn't choose me because something is wrong with me. This card invites you to look at that story. Rejection can say as much about the other person's needs, limits, or circumstances as it does about you, and sometimes it says nothing about you at all. It asks what you would say to a friend who had just been turned away, and whether you can offer yourself the same.",
+      "engine": {
+        "evidence": "Ostracism is aversive even in minimal laboratory forms: Moderate.",
+        "must_not": [
+          "Simulate exclusion",
+          "Guarantee that the rejection had nothing to do with the player"
+        ],
+        "prefer": [
+          "a story about your worth"
+        ],
+        "avoid": [
+          "their loss",
+          "you're better off"
+        ]
+      },
+      "flags": [],
+      "status": "approved",
+      "order": 16
+    }
+  ]
+}
