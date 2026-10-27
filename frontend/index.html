@@ -4,10 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Shame: The Game</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+<link rel="preload" href="fonts/eb-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/cormorant-sc-latin-600.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+/* Fonts are served with the app (no third-party requests). SIL Open Font License: see fonts/OFL-*.txt */
+@font-face{font-family:"Cormorant SC";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/cormorant-sc-latin-500.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Cormorant SC";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/cormorant-sc-latin-600.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"EB Garamond";font-style:italic;font-weight:400;font-display:swap;src:url("fonts/eb-garamond-italic-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"EB Garamond";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/eb-garamond-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"EB Garamond";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/eb-garamond-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
 html,body{margin:0}
 
 /* Layout: one phone-width column, centered on larger screens; the app itself, not a page about the app. Single dark look taken from the deck art. */
@@ -34,7 +39,7 @@ button:focus-visible,label:focus-within{outline:2px solid var(--gilt);outline-of
 .device{position:relative;max-width:430px;height:100%;margin:0 auto;overflow:hidden;background:var(--ink);
   box-shadow:0 0 0 1px var(--line)}
 .screen{position:absolute;inset:0;display:flex;flex-direction:column;transition:opacity .6s ease}
-.screen[hidden]{display:none!important}
+[hidden]{display:none!important}
 .tag{position:absolute;top:8px;right:8px;z-index:50;font:600 10px/1 var(--ui);letter-spacing:.12em;text-transform:uppercase;
   color:var(--pewter);background:rgba(0,0,0,.55);border:1px solid var(--line);padding:5px 8px;border-radius:99px}
 
@@ -132,23 +137,39 @@ button:focus-visible,label:focus-within{outline:2px solid var(--gilt);outline-of
 .spread .face img{width:100%;height:100%;object-fit:contain;display:block}
 .spread .ph{padding:8px}.spread .ph .n{font-size:11px}.spread .ph .p{display:none}
 .spread .lbl{font:600 9.5px/1 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--pewter);text-align:center;margin-top:5px}
-.stub{border:1px dashed var(--line);border-radius:6px;padding:18px 16px;color:var(--pewter);font-size:16px}
-.stub b{color:var(--bone);font-weight:500}
-.stub ol{margin:8px 0 0;padding-left:20px}
 .support{font-size:15px;line-height:1.45;color:var(--bone);border-top:1px solid var(--line);padding-top:16px}
 .actions{display:flex;flex-direction:column;align-items:center;gap:8px}
 .note{font:500 13px var(--ui);color:var(--gilt);min-height:1.2em;text-align:center}
+.rd-body{display:flex;flex-direction:column;gap:18px}
+.rd-opening{margin:0;font-size:18px;line-height:1.5}
+.rd-sec{display:flex;flex-direction:column;gap:6px}
+.rd-sec .t{font:600 11px/1 var(--ui);letter-spacing:.16em;text-transform:uppercase;color:var(--gilt)}
+.rd-sec h3,.rd-acts h3{font:600 21px/1.15 var(--display);letter-spacing:.02em;margin:0}
+.rd-sec p{margin:0}
+.rd-acts{display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line);padding-top:16px}
+.rd-acts ol{margin:0;padding:0;list-style:none;counter-reset:act;display:flex;flex-direction:column;gap:10px}
+.rd-acts li{counter-increment:act;display:flex;gap:12px}
+.rd-acts li::before{content:counter(act);font:600 18px/1.35 var(--display);color:var(--gilt);flex:none;width:14px}
+.wait{padding:28px 0;text-align:center;font-style:italic;color:var(--pewter);animation:breathe 2.4s ease-in-out infinite}
+@keyframes breathe{50%{opacity:.45}}
+.oops{border:1px dashed var(--line);border-radius:6px;padding:18px 16px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.oops p{margin:0}
+.loadfail{padding:40px 16px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;color:var(--pewter)}
+.loadfail p{margin:0}
 
 /* About */
 .ab{padding:24px 16px 48px;display:flex;flex-direction:column;gap:14px;max-width:62ch}
 .ab h2{font:600 30px/1.1 var(--display);margin:0}
 .ab h3{font:600 18px/1.2 var(--display);letter-spacing:.06em;margin:14px 0 0;color:var(--silver)}
 .ab p{margin:0}
+.ab ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.ab .help ul{margin-top:8px}
+.ab a{color:var(--bone);text-decoration-color:var(--line);text-underline-offset:3px}
 .ab .help{border:1px solid var(--line);border-radius:6px;padding:14px 16px;background:rgba(255,255,255,.03)}
 .ab .help p+p{margin-top:8px}
 .back{align-self:flex-start;font:500 14px var(--ui);color:var(--pewter);padding:6px 0}
 
-@media (prefers-reduced-motion:reduce){.screen,.sheet,.begin,.slot .face{transition:none;animation:none}}
+@media (prefers-reduced-motion:reduce){.screen,.sheet,.begin,.slot .face,.wait{transition:none;animation:none}}
 </style>
 </head>
 <body>
@@ -196,15 +217,12 @@ button:focus-visible,label:focus-within{outline:2px solid var(--gilt);outline-of
 
   <section class="screen" id="reading" hidden aria-label="Your reading">
     <div class="rd">
-      <div><div class="eyebrow">Your reading</div><h2>Your four cards</h2></div>
+      <div><div class="eyebrow">Your reading</div><h2 id="rdTitle">Your four cards</h2></div>
       <div class="spread" id="spread"></div>
-      <div class="stub">
-        <b>In the live app, your AI reading appears here.</b> It will have:
-        <ol><li>a short title</li><li>an opening that ties the cards together</li><li>one section for each of your four cards</li><li>three small actions to try this week</li></ol>
-      </div>
+      <div class="rd-body" id="rdBody" aria-live="polite"></div>
       <p class="support">This reading is AI-generated reflection, not therapy. If something here stirred up more than you expected, you can call, text or chat 988 anytime. It's free and confidential.</p>
       <div class="actions">
-        <button class="metal" id="share">Share</button>
+        <button class="metal" id="share" hidden>Share</button>
         <div class="note" id="shareNote" role="status"></div>
         <button class="textbtn" id="again">New reading</button>
       </div>
@@ -215,20 +233,46 @@ button:focus-visible,label:focus-within{outline:2px solid var(--gilt);outline-of
     <div class="ab">
       <button class="back" id="fromAbout">← Back to cards</button>
       <h2>About &amp; Support</h2>
+      <!-- Text from "STG Welcome and Support Copy v0.2 2026-10-25.md", S5. Bracketed items are placeholders still to fill. -->
       <h3>What this is</h3>
-      <p>Shame: The Game is a reflection tool built on cards. Each card uses an image (a cage, a cloak, a labyrinth) to name a kind of shame, a moment that can set it off, or a practice that can help.</p>
+      <p>Shame: The Game is a reflection tool built on cards. Each card uses an image (a cage, a cloak, a labyrinth) to name a kind of shame, a moment that can set it off, or a practice that can help. Choosing cards and reading about them is a way to look at your own experience from a little distance.</p>
       <h3>What this isn't</h3>
-      <p>Shame: The Game is not therapy, counseling, or medical or mental health care. It doesn't diagnose anything, and it isn't a substitute for a licensed professional.</p>
+      <p>Shame: The Game is not therapy, counseling, or medical or mental health care. It doesn't diagnose anything, and it isn't a substitute for a licensed professional. If you're looking for that kind of support, a doctor or a licensed mental health professional is the right place to start.</p>
+      <h3>How readings are made</h3>
+      <p>[Paul J. Chamberlain] created the game, wrote every card, and chose the research the readings draw on. When you tap "Read my cards," the names of your four cards are sent to an AI system (Claude, made by Anthropic), which writes a short reading. Nothing else is sent: no name, no email, no account.</p>
+      <p>Readings follow a few rules:</p>
+      <ul>
+        <li>They may mention ideas from researchers and writers on shame, compassion and storytelling, but only from a short list we've checked, and only as ideas, never as quotes.</li>
+        <li>They don't give statistics or claim that research proves anything.</li>
+        <li>They don't tell you what you feel or what happened to you. Only you know that.</li>
+      </ul>
+      <p>AI can still get things wrong. If a reading feels off, trust yourself over the reading, and please tell us through the feedback link below.</p>
       <h3>Your privacy</h3>
-      <p>We don't save your readings or the cards you choose. Your reading exists only on your screen. There are no ads, no trackers and no accounts.</p>
+      <ul>
+        <li>We don't save your readings or the cards you choose, and we don't keep records of them.</li>
+        <li>Your reading exists only on your screen. When you close the page, it's gone. To keep one, use Share.</li>
+        <li>There are no ads, no trackers, and no accounts.</li>
+        <li>The app remembers one thing on your own device: that you've already seen the welcome screen.</li>
+      </ul>
       <h3>Talk to someone</h3>
+      <p>If you're struggling, or something here brought up more than you expected, you don't have to sit with it alone.</p>
       <div class="help">
-        <p><b>988 Suicide &amp; Crisis Lifeline.</b> Call, text or chat 988, anytime. It's free, confidential, and caring support for anything that's weighing on you. You don't have to be in crisis to reach out. Chat at 988lifeline.org.</p>
-        <p>Veterans: call 988 and press 1, or text 838255. En español: call 988 and press 2, or text AYUDA to 988. Deaf or hard of hearing: use your relay service, or dial 711 then 988.</p>
+        <p><b>988 Suicide &amp; Crisis Lifeline</b></p>
+        <p>Call, text or chat <b>988</b>, anytime. It's free, confidential, and caring support for anything that's weighing on you: stress, relationships, substance use, loneliness, or thoughts of suicide. You don't have to be in crisis to reach out.</p>
+        <ul>
+          <li>Chat: <a href="https://988lifeline.org" target="_blank" rel="noopener"><b>988lifeline.org</b></a></li>
+          <li>Veterans: call 988 and press 1, or text <b>838255</b></li>
+          <li>En español: call 988 and press 2, or text <b>AYUDA</b> to 988</li>
+          <li>Deaf or hard of hearing: use your preferred relay service, or dial <b>711</b> then 988</li>
+        </ul>
         <p><b>If you or someone else is in immediate danger, call 911.</b></p>
       </div>
+      <p>A trusted friend, a doctor, or a licensed mental health professional can also help.</p>
       <h3>Give feedback</h3>
-      <p>[Feedback form link]</p>
+      <p>This is an early test version, and your experience shapes what comes next. <b>[Feedback form link]</b></p>
+      <p>If you're willing, you can paste or screenshot your reading into the form. It helps us see whether readings land the way they should. Sharing it is entirely up to you.</p>
+      <h3>Who made this</h3>
+      <p>Shame: The Game was created by <b>[Paul J. Chamberlain / Cerebral Itch Labs LLC — confirm]</b>.<br>Contact: <b>[email]</b></p>
     </div>
   </section>
 
@@ -248,19 +292,32 @@ button:focus-visible,label:focus-within{outline:2px solid var(--gilt);outline-of
 </div>
 
 <script>
-const CARDS = [{"id": "shame-13", "type": "shame", "name": "The Chameleon of Emotions", "copy": "Shame is rarely the feeling we notice first. Like a chameleon, it takes on the color of whatever is nearby: it can look like irritation, numbness, perfectionism, a sudden urge to hide, or anger at someone else. Because it changes color so easily, it can go unnamed for years. This card invites you to look beneath the feeling that is easiest to see and ask what might be underneath it. You don't need to catch the chameleon all at once. Noticing the moment its colors shift is a start.", "order": 1}, {"id": "shame-14", "type": "shame", "name": "The Invisible Chain", "copy": "Some chains can't be seen, but you feel their weight. This one is forged from past mistakes, regrets, and moments you wish you could take back, and it can quietly keep you from new chances and closer connections. This card invites you to examine the links one at a time. Some may point to a real harm that calls for repair, and repair can be a way forward. Others may be old judgments you have carried far longer than the mistake deserved. Telling the two apart is how the chain begins to loosen.", "order": 2}, {"id": "shame-15", "type": "shame", "name": "The Mountain of Self-Doubt", "copy": "Self-doubt can rise like a mountain between where you are and where you want to be. Its slopes are built from old messages, past setbacks, and the habit of measuring yourself against others. Looking up from the bottom, the summit can seem impossibly far away. This card does not ask you to conquer the mountain in one climb. It invites you to notice which voices built it, which of their claims still hold up, and what one small step on the path might look like. A route is easier to find once you can see the ground in front of you.", "order": 3}, {"id": "shame-16", "type": "shame", "name": "The Shame Storm", "copy": "Sometimes shame arrives like a storm: sudden, loud, and all-consuming. Thoughts race, the body tightens, and it becomes hard to think clearly or see past the next few minutes. In the middle of it, the storm can feel permanent. This card invites you to recognize the storm while it is happening, and to remember that storms pass. It asks what helps you find shelter: slowing down, stepping away, or reaching for someone steady. You don't have to steer through every storm alone, and you don't have to fix anything while the wind is still blowing.", "order": 4}, {"id": "shame-17", "type": "shame", "name": "The Shame Octopus", "copy": "Shame can be like an octopus, reaching quietly into many parts of life at once: relationships, work, creativity, how you see yourself. It can also cloud the water, the way comparison, social media, and cultural pressure can make it hard to see clearly. Left unnamed, it can pull you away from the people who might help. This card invites you to trace its reach: which parts of your life does it touch, and which does it leave alone? Naming each arm can make the whole creature feel less overwhelming. For many people, connection with others is part of loosening its grip.", "order": 5}, {"id": "shame-18", "type": "shame", "name": "The Locked Door", "copy": "A locked door can mean being kept out: of a group, a family, a workplace, a community. The shame of exclusion often turns an outside barrier into an inside verdict, as if being shut out proves you didn't belong. This card invites you to look at both sides of the door. Who locked it, and why? What did being on the outside cost you? And which doors, now or in the future, might open toward people who would welcome you as you are? Being excluded says something about the room. It does not settle your worth.", "order": 6}, {"id": "shame-01", "type": "shame", "name": "The Generational Shame Labyrinth", "copy": "Some shame arrives before we do. It is passed down through family rules, silences, and the things no one was allowed to say, and it is reinforced by the cultures and histories that surround a family. Like a labyrinth, its walls were built long ago, and its turns can feel like the only paths there are. This card invites you to trace the walls: which rules were spoken, which were only felt, and who was expected to keep them. Naming what was inherited is not the same as blaming the people who passed it on. It is a way of seeing the maze clearly enough to choose a different turn, for yourself and for whoever comes after you.", "order": 7}, {"id": "shame-02", "type": "shame", "name": "The Racial Shame Quicksand", "copy": "Racial shame is quicksand you did not step into. It was poured around you and your community by discriminatory policies, biased institutions, and stereotypes repeated until they felt like truth. The pull is real, and struggling alone can make it feel stronger. This card does not ask you to climb out by yourself or to prove your worth to anyone. It invites you to name where the weight came from, to set down judgments that were never yours to carry, and to reach for the people, histories, and communities who have found solid ground before you. The shame belongs to the forces that imposed it. What belongs to you is your heritage, your pride, and the right to define both on your own terms.", "order": 8}, {"id": "shame-03", "type": "shame", "name": "The Sexual Shame Cage", "copy": "Sexual shame is a cage built from other people's rules: religious, cultural, familial, or picked up in locker rooms and classrooms. Its bars can be made of silence, of jokes, of warnings, or of the message that some desires and identities should stay out of sight. Whatever built it, the cage was not your design. This card invites you to notice the shape of the bars: whose voices you hear when desire or identity comes up, and which parts of yourself learned to hide. You set the pace here. Looking at the cage does not require opening every door at once.", "order": 9}, {"id": "shame-04", "type": "shame", "name": "The Shadow of Financial Shame", "copy": "Money carries more than numbers. Debt, a lean childhood, a career that stalled, or a climb into a world where you never quite feel you belong can all cast a long shadow over how you see yourself. This shame often lives in secrecy: the bill left unopened, the story quietly edited, the comparison you can't stop making. This card invites you to step into the light long enough to separate two things the shadow keeps fused together: what you have, and what you are worth. It does not ask you to fix your finances. It asks whose measure of success you have been living under.", "order": 10}, {"id": "shame-19", "type": "shame", "name": "The Hall of Distorted Mirrors", "copy": "Walk through a hall of distorted mirrors and every reflection exaggerates something: a curve, a line, a sign of age, a change you didn't choose. Beauty standards, comparison, and years of commentary about bodies can work the same way, bending how you see yourself until the distortion feels like the truth. This card invites you to notice whose mirrors these are and where their measurements came from. It doesn't ask you to love every reflection. It asks whether the mirror is telling you the truth, and what it might be like to look at yourself with a little less judgment.", "order": 11}, {"id": "shame-05", "type": "shame", "name": "The Caregiver's Cloak", "copy": "This cloak is worn by those who hold others up: parents, partners, adult children, caregivers, and leaders whose decisions carry other people's livelihoods. It is woven from love and duty, and also from the feelings caregivers are rarely allowed to say out loud: exhaustion, resentment, the private wish for a life with fewer demands. Shame tells you those feelings make you a failure. This card invites you to feel the full weight of the cloak and to notice that wanting relief does not cancel your love. It asks who, if anyone, holds you while you hold everyone else.", "order": 12}, {"id": "worth-01", "type": "worth", "name": "The Auditor of Shadows", "copy": "The Auditor is patient, fair, and unafraid of dark corners. This card invites you to take an honest inventory: where shame shows up in your life, what sets it off, and what it tells you about yourself. The aim is not to judge the ledger, only to read it clearly. For some people, simply putting a feeling into words can soften its grip a little. Naming a shadow does not make it disappear, but it turns a vague dread into something you can see, and what you can see, you can begin to work with.", "order": 1}, {"id": "worth-02", "type": "worth", "name": "The Torch of Intent", "copy": "Before any path, there is a reason to walk it. The Torch of Intent asks you to name what matters to you, the values you want to move toward, and to let that be the light you carry. An intention is not a performance or a promise to be perfect. It is a direction you can return to when the way gets dark or confusing. This card invites you to put your intention into a few plain words, in your own language, that you could still believe on a hard day.", "order": 2}, {"id": "worth-03", "type": "worth", "name": "The Compassionate Gardener", "copy": "Gardens are not shamed into growing. The Compassionate Gardener tends what is there with patience: watering what is struggling, accepting both sunshine and storm, and not expecting bloom on demand. This card invites you to speak to yourself the way you would speak to someone you care about who is having a hard time. If kindness toward yourself feels uncomfortable or even threatening, that is common, and it is worth noticing gently rather than forcing. Compassion here does not mean excusing everything. It means tending yourself well enough to look honestly at what needs care.", "order": 3}, {"id": "worth-04", "type": "worth", "name": "The Breaker of Chains", "copy": "The Breaker of Chains is about action. Shame urges us to hide, shrink, and avoid. When that urge does not fit the facts of the situation, acting against it, gently and deliberately, can loosen its hold: showing up instead of withdrawing, speaking instead of going silent. This card invites you to name one small, concrete step that moves against the pull of shame. First, though, it asks an honest question: does this shame point to something you actually did that needs repair? If so, repair is the step. If not, the chain may be one you are ready to test.", "order": 4}, {"id": "worth-05", "type": "worth", "name": "The Adaptive Warrior", "copy": "Every path has setbacks. The Adaptive Warrior does not pretend otherwise; it plans for them. This card invites you to think ahead: what situations tend to set off your shame, what you usually do next, and what you might try instead. A setback is information, not proof that you have failed or that the effort was pointless. The warrior's strength is not in never falling, but in knowing in advance how to get back up, and who to call when that happens.", "order": 5}, {"id": "worth-06", "type": "worth", "name": "The Phoenix of Growth", "copy": "The phoenix rises from its own ashes, and some people do find that hard experiences, over time, reshaped them in ways they value. This card honors that possibility without demanding it. Growth is not the price of suffering, and you do not owe anyone a redemption story. If something new has emerged from what you have been through, this card invites you to name it. If it hasn't, or if it still feels like ash, that is a legitimate place to be. The phoenix can also simply rest.", "order": 6}, {"id": "worth-07", "type": "worth", "name": "The Sentinel of Resilience", "copy": "The Sentinel stands watch, steady, because it has stood watch before. Most people carry more resilience than they credit themselves with: ways of coping, people they lean on, skills learned the hard way. This card invites you to take stock of yours. What has helped you through difficult stretches before? What would you want within reach next time? Resilience is not the absence of distress, and needing help is not a failure of the watch. Even sentinels are relieved at the end of a shift.", "order": 7}, {"id": "worth-08", "type": "worth", "name": "The Lighthouse of Triumph", "copy": "A lighthouse does not calm the sea; it marks a way through it. This card invites you to make or choose a small personal artifact that marks something you have come through, or are still moving through: a few written lines, a drawing, a song, an object, a photograph. It does not have to be beautiful or finished. It is a reminder you can hold, something to look at on a dark night that says: I have been here before, and this is how I found my way.", "order": 8}, {"id": "activation-01", "type": "activation", "name": "The Critic's Gaze", "copy": "Someone's judgment lands, and suddenly it feels like a verdict on your whole self. The Critic's Gaze is the moment when another person's criticism, spoken or only imagined, reaches past what you did and seems to say something about who you are. This card invites you to notice the sentence that landed and to ask two questions: is there something in it worth learning from, and is any of it more about the critic than about you? Both can be true at once.", "order": 9}, {"id": "activation-02", "type": "activation", "name": "The Social Blunder", "copy": "The wrong word at the wrong moment. The joke that fell flat. The name you forgot. Social blunders can replay in the mind for years, though most of the time they are embarrassment, a brief and very human sting, rather than proof that something is wrong with you. This card invites you to look at the moment with a little lightness, and to ask whether it truly says anything about your worth or has simply been replaying louder than it deserves.", "order": 10}, {"id": "activation-03", "type": "activation", "name": "The Perfectionist's Burden", "copy": "Nothing is ever quite enough. The Perfectionist's Burden is the weight of standards so high that every success feels provisional and every flaw feels like exposure. It can look like excellence from the outside, and that is part of its trap. This card does not treat perfectionism as a secret strength. It invites you to notice where the bar came from, what you fear would happen if you lowered it, and what good enough might feel like in one small corner of your life.", "order": 11}, {"id": "activation-04", "type": "activation", "name": "The Unmet Goal", "copy": "You aimed for something and didn't reach it. The Unmet Goal is the gap between where you hoped to be and where you are, and the shame that rushes in to explain the gap as a flaw in you. This card invites you to separate the goal from your worth. What did you actually want? What got in the way? Is the goal still yours, or was it borrowed from someone else's idea of success? A missed mark is a fact about a moment, not a final judgment of a person.", "order": 12}, {"id": "activation-05", "type": "activation", "name": "The Vulnerability Exposed", "copy": "Something you would rather have kept hidden was seen. The Vulnerability Exposed is that moment of being laid open, whether you chose to share or the choice was taken from you. Vulnerability can deepen connection, but only with people who handle it with care, and it is never something you owe anyone. This card invites you to notice how the exposure felt, who responded well and who didn't, and what you have learned about whom you can trust with the parts of yourself that matter most.", "order": 13}, {"id": "activation-06", "type": "activation", "name": "The Broken Trust", "copy": "Someone you relied on let you down. Betrayal by a partner, friend, family member, or institution can leave two wounds: the hurt itself, and the shame of having trusted in the first place. This card invites you to notice whether you are blaming yourself for someone else's choice. Trusting was not a flaw in your character; it is part of how people connect. Forgiveness, of them or of yourself, is not required here. The card simply asks what you need now to feel safe enough to trust your own judgment again.", "order": 14}, {"id": "activation-07", "type": "activation", "name": "The Unspoken Secret", "copy": "Some truths are heavy to carry alone. The Unspoken Secret is the weight of something hidden: an experience, a part of yourself, a fact about your life that you fear would change how others see you. Secrets can take up a lot of room in the mind. This card does not tell you to reveal anything. Sharing can bring relief with the right person and real harm with the wrong one. It invites you to notice what the secret costs you to keep, and whether there is anyone, now or someday, who could safely hear it.", "order": 15}, {"id": "activation-08", "type": "activation", "name": "The Rejection Wound", "copy": "Being left out, turned down, or turned away. Rejection hurts in a way almost everyone recognizes, and shame often turns it into a story about your worth: they didn't choose me because something is wrong with me. This card invites you to look at that story. Rejection can say as much about the other person's needs, limits, or circumstances as it does about you, and sometimes it says nothing about you at all. It asks what you would say to a friend who had just been turned away, and whether you can offer yourself the same.", "order": 16}];
-const ART = new Set(CARDS.map(c=>c.id));
-const byId = Object.fromEntries(CARDS.map(c=>[c.id,c]));
+// Card names and copy come from /api/cards, which reads stg-cards-v1.1.json. Nothing is retyped here.
+let CARDS = [], byId = {};
 const TYPE = {shame:"Shame",worth:"Worth",activation:"Activation"};
 const LIMIT = {shame:2,worth:1,activation:1};
 let sel = {shame:[],worth:[],activation:[]};
 let openId = null;
 const $ = id=>document.getElementById(id);
+const esc = s=>String(s).replace(/[&<>"']/g, ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+const reduceMotion = ()=>matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+// Remembers on this device only that Welcome was seen. If storage is unavailable, Welcome simply shows again.
+const WELCOME_KEY = "stg-welcome-seen";
+function welcomeSeen(){ try { return localStorage.getItem(WELCOME_KEY)==="1"; } catch { return false; } }
+function markWelcomeSeen(){ try { localStorage.setItem(WELCOME_KEY,"1"); } catch {} }
+
+function placeholder(c, small){
+  return `<div class="ph"><span class="t">${TYPE[c.type]}</span><span class="n">${esc(c.name)}</span>${small?"":'<span class="p">Art pending</span>'}</div>`;
+}
+// Art is found by card ID. If the file is missing, the image swaps itself for a placeholder.
 function face(id, small){
   const c = byId[id];
-  if (ART.has(id)) return `<img src="img/cards/${id}.webp" alt="${c.name}" loading="lazy">`;
-  return `<div class="ph"><span class="t">${TYPE[c.type]}</span><span class="n">${c.name}</span>${small?"":'<span class="p">Art pending</span>'}</div>`;
+  return `<img src="img/cards/${esc(id)}.webp" alt="${esc(c.name)}" loading="lazy" data-id="${esc(id)}"${small?' data-small':''} onerror="noArt(this)">`;
+}
+function noArt(img){
+  const c = byId[img.dataset.id]; if (!c) return;
+  img.outerHTML = placeholder(c, img.hasAttribute("data-small"));
 }
 function show(id){
   for (const s of ["splash","welcome","builder","reading","about"]) $(s).hidden = s!==id;
@@ -272,10 +329,11 @@ function chosenAt(i){ const [t,k]=order[i]; return sel[t][k]; }
 function total(){ return sel.shame.length+sel.worth.length+sel.activation.length; }
 
 function render(){
+  if (!CARDS.length) return;
   const next = fillOrder.find(i=>!chosenAt(i));
   $("rail").innerHTML = order.map(([t],i)=>{
     const id = chosenAt(i);
-    return `<button class="slot${i===next?" next":""}" data-slot="${i}" aria-label="${id?"Remove "+byId[id].name:"Empty "+TYPE[t]+" slot"}">
+    return `<button class="slot${i===next?" next":""}" data-slot="${i}" aria-label="${id?"Remove "+esc(byId[id].name):"Empty "+TYPE[t]+" slot"}">
       <span class="face">${id?face(id,true):'<span class="plus">+</span>'}</span><span class="lbl">${TYPE[t]}</span></button>`;
   }).join("");
   const groups = [["shame","Step 1 · Choose two","Shame cards"],["worth","Step 2 · Choose one","Worth card"],["activation","Step 3 · Choose one","Activation card"]];
@@ -283,12 +341,25 @@ function render(){
     const n = sel[t].length, full = n===LIMIT[t];
     const cards = CARDS.filter(c=>c.type===t).map(c=>{
       const on = sel[t].includes(c.id);
-      return `<button class="card${on?" chosen":""}" data-id="${c.id}"><span class="face">${face(c.id)}${on?'<span class="chip">✓ Chosen</span>':""}</span>${ART.has(c.id)?"":`<span class="name">${c.name}</span>`}</button>`;
+      return `<button class="card${on?" chosen":""}" data-id="${esc(c.id)}"><span class="face">${face(c.id)}${on?'<span class="chip">✓ Chosen</span>':""}</span></button>`;
     }).join("");
     return `<section class="group"><div class="group-head"><div><div class="step">${step}</div><h3>${title}</h3></div><span class="pill${full?" full":""}">${n} / ${LIMIT[t]}</span></div><div class="carousel">${cards}</div></section>`;
   }).join("");
   $("count").textContent = `${total()} of 4 chosen`;
   $("read").disabled = total()<4;
+}
+
+let cardsLoading;
+function loadCards(){
+  cardsLoading ??= fetch("/api/cards").then(r=>{ if (!r.ok) throw new Error(); return r.json(); }).then(d=>{
+    CARDS = d.cards; byId = Object.fromEntries(CARDS.map(c=>[c.id,c]));
+    for (const t of Object.keys(LIMIT)) LIMIT[t] = d.spread[t] ?? LIMIT[t];
+    render();
+  }).catch(()=>{
+    cardsLoading = null;
+    $("scroll").innerHTML = `<div class="loadfail"><p>The cards couldn't be loaded. Check your connection and try again.</p><button class="metal" id="retryCards">Try again</button></div>`;
+  });
+  return cardsLoading;
 }
 
 function openSheet(id){
@@ -310,42 +381,106 @@ function act(){
   closeSheet(); render();
   if (sel[t].length===LIMIT[t]) {
     const nextGroup = document.querySelectorAll(".group")[["shame","worth","activation"].indexOf(t)+1];
-    if (nextGroup && total()<4) nextGroup.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth", block:"start"});
+    if (nextGroup && total()<4) nextGroup.scrollIntoView({behavior: reduceMotion()?"auto":"smooth", block:"start"});
   }
 }
+
+// The reading lives in memory only, and only until New reading or the page closes.
+let reading = null, readingRun = 0, readingAbort = null;
+const SUPPORT = "This reading is AI-generated reflection, not therapy. If something here stirred up more than you expected, you can call, text or chat 988 anytime. It's free and confidential.";
+
 function toReading(){
   $("spread").innerHTML = order.map(([t],i)=>`<div><div class="face">${face(chosenAt(i),true)}</div><div class="lbl">${TYPE[t]}</div></div>`).join("");
-  $("shareNote").textContent = "";
   show("reading");
+  requestReading();
 }
-function reset(){ sel = {shame:[],worth:[],activation:[]}; render(); }
+async function requestReading(){
+  const run = ++readingRun;
+  readingAbort?.abort(); readingAbort = new AbortController();
+  const timer = setTimeout(()=>readingAbort.abort(), 90000);
+  reading = null;
+  $("rdTitle").textContent = "Your four cards";
+  $("share").hidden = true; $("shareNote").textContent = "";
+  $("rdBody").innerHTML = `<p class="wait">Reading your cards…</p>`;
+  let status = 0;
+  try {
+    // Only the four card IDs are sent: Worth, the two Shame cards in the order chosen, Activation.
+    const res = await fetch("/api/reading", {method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({cards: order.map((_,i)=>chosenAt(i))}), signal: readingAbort.signal});
+    status = res.status;
+    if (!res.ok) throw new Error();
+    const data = await res.json();
+    if (run !== readingRun) return;
+    reading = data.reading; showReading();
+  } catch {
+    if (run !== readingRun) return;
+    const msg = status===429
+      ? "You've reached the limit for readings for now. Please try again in a little while."
+      : "Your reading couldn't be written just now. Please try again.";
+    $("rdBody").innerHTML = `<div class="oops"><p>${msg}</p><button class="metal" id="retryReading">Try again</button></div>`;
+  } finally { clearTimeout(timer); }
+}
+function showReading(){
+  $("rdTitle").textContent = reading.title;
+  $("rdBody").innerHTML = `<p class="rd-opening">${esc(reading.opening)}</p>` +
+    reading.sections.map(s=>{ const c = byId[s.card_id];
+      return `<section class="rd-sec"><span class="t">${TYPE[c.type]}</span><h3>${esc(c.name)}</h3><p>${esc(s.text)}</p></section>`; }).join("") +
+    `<section class="rd-acts"><h3>Three things to try this week</h3><ol>${reading.actions.map(a=>`<li><span>${esc(a)}</span></li>`).join("")}</ol></section>`;
+  $("share").hidden = false;
+}
+function readingText(){
+  return [reading.title, reading.opening,
+    ...reading.sections.map(s=>`${byId[s.card_id].name}\n${s.text}`),
+    "Three things to try this week\n" + reading.actions.map((a,i)=>`${i+1}. ${a}`).join("\n"),
+    SUPPORT].join("\n\n");
+}
+async function share(){
+  if (!reading) return;
+  const text = readingText();
+  $("shareNote").textContent = "";
+  if (navigator.share) {
+    try { await navigator.share({title: "My Shame: The Game reading", text}); }
+    catch (e) { if (e.name !== "AbortError") $("shareNote").textContent = "Sharing didn't work. Please try again."; }
+    return;
+  }
+  try { await navigator.clipboard.writeText(text); $("shareNote").textContent = "Reading copied. You can paste it anywhere."; }
+  catch { $("shareNote").textContent = "Sharing isn't available on this device."; }
+}
+function reset(){
+  readingRun++; readingAbort?.abort(); reading = null;
+  sel = {shame:[],worth:[],activation:[]}; render();
+}
 
 let splashTimer;
 function leaveSplash(){
   clearTimeout(splashTimer);
   const s = $("splash"); s.classList.add("fade");
-  setTimeout(()=>{ s.classList.remove("fade"); show("welcome"); }, matchMedia("(prefers-reduced-motion: reduce)").matches?0:600);
+  setTimeout(()=>{ s.classList.remove("fade"); show(welcomeSeen()?"builder":"welcome"); }, reduceMotion()?0:600);
 }
 function start(){
-  reset(); show("splash");
+  reset(); show("splash"); loadCards();
   splashTimer = setTimeout(leaveSplash, 2000);
 }
 
 $("splash").addEventListener("click", leaveSplash);
 $("agree").addEventListener("change", e=>{ $("begin").disabled = !e.target.checked; });
-$("begin").addEventListener("click", ()=>{ show("builder"); });
+$("begin").addEventListener("click", ()=>{ markWelcomeSeen(); show("builder"); });
 $("rail").addEventListener("click", e=>{
   const b = e.target.closest("[data-slot]"); if(!b) return;
   const [t,k] = order[+b.dataset.slot]; const id = sel[t][k];
   if (id){ sel[t] = sel[t].filter(x=>x!==id); render(); }
 });
-$("scroll").addEventListener("click", e=>{ const b = e.target.closest("[data-id]"); if (b) openSheet(b.dataset.id); });
+$("scroll").addEventListener("click", e=>{
+  if (e.target.closest("#retryCards")) { loadCards(); return; }
+  const b = e.target.closest("[data-id]"); if (b) openSheet(b.dataset.id);
+});
 $("sheetAct").addEventListener("click", act);
 $("sheetClose").addEventListener("click", closeSheet);
 $("sheetWrap").addEventListener("click", e=>{ if (e.target.id==="sheetWrap") closeSheet(); });
 document.addEventListener("keydown", e=>{ if (e.key==="Escape" && !$("sheetWrap").hidden) closeSheet(); });
 $("read").addEventListener("click", toReading);
-$("share").addEventListener("click", ()=>{ $("shareNote").textContent = "In the live app, this opens your phone's share sheet."; });
+$("rdBody").addEventListener("click", e=>{ if (e.target.closest("#retryReading")) requestReading(); });
+$("share").addEventListener("click", share);
 $("again").addEventListener("click", ()=>{ reset(); show("builder"); });
 $("toAbout").addEventListener("click", ()=>show("about"));
 $("fromAbout").addEventListener("click", ()=>show("builder"));
