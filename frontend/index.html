@@ -261,8 +261,7 @@ button:focus-visible,label:focus-within{outline:2px solid var(--gilt);outline-of
       <div><div class="eyebrow">Your reading</div><h2 id="rdTitle">Your four cards</h2></div>
       <div class="spread" id="spread"></div>
       <div class="rd-body" id="rdBody" aria-live="polite"></div>
-      <!-- "In Costa Rica, call 911" is for retreat week (Nov 8–15). Paul will confirm a Costa Rican crisis line; don't add a local number until then. -->
-      <p class="support">This reading is AI-generated reflection, not therapy. If something here stirred up more than you expected, the 988 Suicide &amp; Crisis Lifeline is free, confidential and open 24/7. <a href="tel:988">Call</a> or <a href="sms:988">text</a> 988, or chat at <a href="https://988lifeline.org" target="_blank" rel="noopener">988lifeline.org</a>. Outside the US, find a local line at <a href="https://findahelpline.com" target="_blank" rel="noopener">findahelpline.com</a>. In Costa Rica, call <a href="tel:911">911</a>.</p>
+      <p class="support">This reading is AI-generated reflection, not therapy. If something here stirred up more than you expected, the 988 Suicide &amp; Crisis Lifeline is free, confidential and open 24/7. <a href="tel:988">Call</a> or <a href="sms:988">text</a> 988, or chat at <a href="https://988lifeline.org" target="_blank" rel="noopener">988lifeline.org</a>. Outside the US, find a local line at <a href="https://findahelpline.com" target="_blank" rel="noopener">findahelpline.com</a>.</p>
       <div class="actions">
         <button class="metal" id="share" hidden>Share</button>
         <div class="note" id="shareNote" role="status"></div>
@@ -448,7 +447,7 @@ function act(){
 // The reading lives in memory only, and only until New reading or the page closes.
 let reading = null, readingRun = 0, readingAbort = null;
 let readShame = []; // the Shame cards of this visit's latest reading, for "A Question for You"; never stored
-const SUPPORT = "This reading is AI-generated reflection, not therapy. If something here stirred up more than you expected, the 988 Suicide & Crisis Lifeline is free, confidential and open 24/7. Call or text 988, or chat at 988lifeline.org. Outside the US, find a local line at findahelpline.com. In Costa Rica, call 911.";
+const SUPPORT = "This reading is AI-generated reflection, not therapy. If something here stirred up more than you expected, the 988 Suicide & Crisis Lifeline is free, confidential and open 24/7. Call or text 988, or chat at 988lifeline.org. Outside the US, find a local line at findahelpline.com.";
 
 function toReading(){
   readShame = [...sel.shame];
