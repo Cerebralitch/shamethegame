@@ -105,3 +105,39 @@ test("rate limit: 20 readings per hour per visitor", () => {
   assert.equal(takeReading(req("198.51.100.4"), t + 100), 0);
   assert.equal(takeReading(req("203.0.113.9"), t + 60 * 60 * 1000 + 1), 0);
 });
+
+test("a 400 on the fallback request is retried once without fallbacks, then fallbacks stay off", async () => {
+  const { generate } = await import("../lib/reading.js");
+  const Anthropic = (await import("@anthropic-ai/sdk")).default;
+  const calls = [];
+  const ok = { stop_reason: "end_turn", content: [{ type: "text", text: JSON.stringify(good()) }] };
+  const fake = {
+    beta: { messages: { create: async (p) => { calls.push(["beta", p]);
+      throw new Anthropic.BadRequestError(400, { type: "error", error: { type: "invalid_request_error", message: "fallbacks: not allowed" } }, "fallbacks: not allowed", new Headers()); } } },
+    messages: { create: async (p) => { calls.push(["plain", p]); return ok; } },
+  };
+  assert.deepEqual(await generate(spread, fake), good());
+  assert.deepEqual(calls.map((c) => c[0]), ["beta", "plain"]);
+  const plain = calls[1][1];
+  assert.equal(plain.model, "claude-sonnet-5-5");
+  assert.ok(!("fallbacks" in plain) && !("betas" in plain));
+  assert.equal(plain.output_config.format.type, "json_schema");
+  // Later calls on this instance skip the rejected beta request.
+  await generate(spread, fake);
+  assert.deepEqual(calls.map((c) => c[0]), ["beta", "plain", "plain"]);
+});
+
+test("other API errors are not swallowed, and refusals return null", async () => {
+  const { generate } = await import("../lib/reading.js");
+  const Anthropic = (await import("@anthropic-ai/sdk")).default;
+  const err = new Anthropic.AuthenticationError(401, { type: "error", error: { type: "authentication_error", message: "bad key" } }, "bad key", new Headers());
+  await assert.rejects(generate(spread, { beta: { messages: { create: async () => { throw err; } } }, messages: { create: async () => { throw err; } } }), Anthropic.AuthenticationError);
+  const refusal = { stop_reason: "refusal", content: [] };
+  assert.equal(await generate(spread, { beta: { messages: { create: async () => refusal } }, messages: { create: async () => refusal } }), null);
+});
+
+test("logged API errors never contain card IDs or names", async () => {
+  const { scrub } = await import("../lib/reading.js");
+  const out = scrub("output_config.format.schema: enum [worth-08, shame-13] invalid near The Shame Storm");
+  assert.ok(!/worth-08|shame-13|Shame Storm/.test(out), out);
+});
