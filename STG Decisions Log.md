@@ -38,6 +38,12 @@ One line per decision. Newest at the bottom. Once a decision is here, it is sett
 | 2026-10-25 | Card copy v1.1 approved: all 28 cards, including the seven new Shame rewrites | Deck text frozen for the Oct 31 test |
 | 2026-10-25 | Welcome AI disclosure reworded: "Made by a person, written with AI" (Welcome copy v0.2) | Credits Paul's authorship while keeping the AI disclosure clear |
 | 2026-10-26 | The working preview (handoff/frontend/) is the design source of truth for Claude Code; the Claude Design 1a handoff is an older draft | 1a lacks the final art and screens; two conflicting sources were confusing the build |
+| 2026-10-27 | "A Question for You" (Shame Prompts, shame_prompts.json v1.1) pulled forward into the Nov 6 build: one prompt per sitting, after a reading and on a new Reflect link | Paul's build brief; gives readings a reflective next step |
+| 2026-10-27 | Shame Prompts are answered on paper: no text boxes. Taps only (SP-13's options, SP-08's card choice). Keeps "No free-text input in the prototype" (2026-10-18) intact | Avoids crisis detection and stored sensitive writing |
+| 2026-10-27 | Nothing a player chooses in Shame Prompts is saved; the device remembers only the last prompt's ID and depth (for the no-two-deep-prompts-in-a-row rule). About's privacy line updated to say so (counsel to review) | Privacy on shared phones; About must stay accurate |
+| 2026-10-27 | No counting of prompt opens or completions; learn whether testers use the button through the feedback form | Keeps "no analytics" (2026-10-18) |
+| 2026-10-27 | SP-08 offers the player's two chosen Shame cards (and "Another card") as its answer choices | Players choose cards; there is no single drawn card |
+| 2026-10-27 | SP-20 held back until its unlock rule is built; source notes are not shown to players and not fed to AI readings | Brief's out-of-scope list; source notes name people outside the approved list and use the word "therapy" |
 
 ## Parking lot
 
