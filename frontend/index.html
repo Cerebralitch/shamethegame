@@ -139,6 +139,7 @@ button:focus-visible,label:focus-within{outline:2px solid var(--gilt);outline-of
 .spread .ph{padding:8px}.spread .ph .n{font-size:11px}.spread .ph .p{display:none}
 .spread .lbl{font:600 9.5px/1 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--pewter);text-align:center;margin-top:5px}
 .support{font-size:15px;line-height:1.45;color:var(--bone);border-top:1px solid var(--line);padding-top:16px}
+.support a,.qa-988 a{color:var(--bone);text-decoration:underline;text-decoration-color:var(--pewter);text-underline-offset:3px}
 .actions{display:flex;flex-direction:column;align-items:center;gap:8px}
 .note{font:500 13px var(--ui);color:var(--gilt);min-height:1.2em;text-align:center}
 .rd-body{display:flex;flex-direction:column;gap:18px}
@@ -151,9 +152,6 @@ button:focus-visible,label:focus-within{outline:2px solid var(--gilt);outline-of
 .rd-acts ol{margin:0;padding:0;list-style:none;counter-reset:act;display:flex;flex-direction:column;gap:10px}
 .rd-acts li{counter-increment:act;display:flex;gap:12px}
 .rd-acts li::before{content:counter(act);font:600 18px/1.35 var(--display);color:var(--gilt);flex:none;width:14px}
-.rd-carry{margin-top:6px;padding:22px 18px;border:1px solid var(--line);border-radius:6px;background:rgba(255,255,255,.03);display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
-.rd-carry .t{font:600 11px/1 var(--ui);letter-spacing:.16em;text-transform:uppercase;color:var(--gilt)}
-.rd-carry p{margin:0;font:italic 21px/1.4 var(--body);color:var(--bone);text-wrap:balance}
 .wait{padding:28px 0;text-align:center;font-style:italic;color:var(--pewter);animation:breathe 2.4s ease-in-out infinite}
 @keyframes breathe{50%{opacity:.45}}
 .oops{border:1px dashed var(--line);border-radius:6px;padding:18px 16px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
@@ -192,7 +190,7 @@ button:focus-visible,label:focus-within{outline:2px solid var(--gilt);outline-of
 #qa{background:var(--ink);z-index:40}
 .qa-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:calc(10px + env(safe-area-inset-top,0px)) 8px 10px 16px;
   border-bottom:1px solid var(--line);background:rgba(8,11,23,.96)}
-.qa-988{font:500 13px/1.3 var(--ui);color:var(--bone);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+.qa-988{margin:0;font:500 13px/1.3 var(--ui);color:var(--bone)}
 .qa-close{flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;font:400 30px/1 var(--ui);color:var(--pewter)}
 .qa-timer{padding:8px 16px 0;font:500 13px var(--ui);color:var(--gilt);text-align:center;font-variant-numeric:tabular-nums}
 .qa-body{flex:1;overflow-y:auto;padding:40px 22px 40px;display:flex;flex-direction:column;justify-content:center;gap:22px;text-align:center}
@@ -263,7 +261,8 @@ button:focus-visible,label:focus-within{outline:2px solid var(--gilt);outline-of
       <div><div class="eyebrow">Your reading</div><h2 id="rdTitle">Your four cards</h2></div>
       <div class="spread" id="spread"></div>
       <div class="rd-body" id="rdBody" aria-live="polite"></div>
-      <p class="support">This reading is AI-generated reflection, not therapy. If something here stirred up more than you expected, you can call, text or chat 988 anytime. It's free and confidential.</p>
+      <!-- "In Costa Rica, call 911" is for retreat week (Nov 8–15). Paul will confirm a Costa Rican crisis line; don't add a local number until then. -->
+      <p class="support">This reading is AI-generated reflection, not therapy. If something here stirred up more than you expected, the 988 Suicide &amp; Crisis Lifeline is free, confidential and open 24/7. <a href="tel:988">Call</a> or <a href="sms:988">text</a> 988, or chat at <a href="https://988lifeline.org" target="_blank" rel="noopener">988lifeline.org</a>. Outside the US, find a local line at <a href="https://findahelpline.com" target="_blank" rel="noopener">findahelpline.com</a>. In Costa Rica, call <a href="tel:911">911</a>.</p>
       <div class="actions">
         <button class="metal" id="share" hidden>Share</button>
         <div class="note" id="shareNote" role="status"></div>
@@ -283,7 +282,7 @@ button:focus-visible,label:focus-within{outline:2px solid var(--gilt);outline-of
 
   <section class="screen" id="qa" hidden aria-label="A question for you">
     <header class="qa-top">
-      <a class="qa-988" href="tel:988">Call or text 988 (Suicide &amp; Crisis Lifeline)</a>
+      <p class="qa-988">988 Suicide &amp; Crisis Lifeline: <a href="tel:988">call</a> or <a href="sms:988">text</a> 988</p>
       <button class="qa-close" id="qaClose" aria-label="Close">×</button>
     </header>
     <div class="qa-timer" id="qaTimer" role="timer" hidden></div>
@@ -449,7 +448,7 @@ function act(){
 // The reading lives in memory only, and only until New reading or the page closes.
 let reading = null, readingRun = 0, readingAbort = null;
 let readShame = []; // the Shame cards of this visit's latest reading, for "A Question for You"; never stored
-const SUPPORT = "This reading is AI-generated reflection, not therapy. If something here stirred up more than you expected, you can call, text or chat 988 anytime. It's free and confidential.";
+const SUPPORT = "This reading is AI-generated reflection, not therapy. If something here stirred up more than you expected, the 988 Suicide & Crisis Lifeline is free, confidential and open 24/7. Call or text 988, or chat at 988lifeline.org. Outside the US, find a local line at findahelpline.com. In Costa Rica, call 911.";
 
 function toReading(){
   readShame = [...sel.shame];
@@ -489,7 +488,6 @@ function showReading(){
     reading.sections.map(s=>{ const c = byId[s.card_id];
       return `<section class="rd-sec"><span class="t">${TYPE[c.type]}</span><h3>${esc(c.name)}</h3><p>${esc(s.text)}</p></section>`; }).join("") +
     `<section class="rd-acts"><h3>Three things to try this week</h3><ol>${reading.actions.map(a=>`<li><span>${esc(a)}</span></li>`).join("")}</ol></section>` +
-    `<section class="rd-carry"><span class="t">A question to carry</span><p>${esc(reading.carry)}</p></section>` +
     `<div class="ask"><button class="plaque glow" data-ask="reading" aria-label="A question for you"><span>A Question for You</span></button></div>`;
   $("share").hidden = false;
 }
@@ -497,7 +495,6 @@ function readingText(){
   return [reading.title, reading.opening,
     ...reading.sections.map(s=>`${byId[s.card_id].name}\n${s.text}`),
     "Three things to try this week\n" + reading.actions.map((a,i)=>`${i+1}. ${a}`).join("\n"),
-    "A question to carry\n" + reading.carry,
     SUPPORT].join("\n\n");
 }
 async function share(){
@@ -543,7 +540,11 @@ async function openQuestion(entry){
   let data;
   try { data = await loadPrompts(); }
   catch { $("qaBody").innerHTML = `<p class="qa-note">The question couldn't be loaded. Check your connection and try again.</p><div class="qa-row"><button class="metal" data-qa="retry" data-entry="${entry}">Try again</button></div>`; return; }
-  const prompt = promptRules.pickPrompt(data, entry, {shameCards: readShame, last: lastPrompt(), usedThisVisit});
+  // Under a reading, the question is the one the reading chose (checked against this device's last prompt
+  // the first time it's opened, then kept for that reading). Reflect picks its own.
+  let prompt;
+  if (entry==="reading" && reading) prompt = reading.question ??= promptRules.promptForReading(data, reading.prompt_id, lastPrompt());
+  else prompt = promptRules.pickPrompt(data, entry, {shameCards: readShame, last: lastPrompt(), usedThisVisit});
   if (!prompt) { $("qaBody").innerHTML = `<p class="qa-note">There's no question to offer right now. Please come back another time.</p>`; return; }
   usedThisVisit.add(prompt.id); rememberPrompt(prompt);
   qa = {prompt, closing: promptRules.closingFor(data, prompt), choice: null, step: "prompt"};

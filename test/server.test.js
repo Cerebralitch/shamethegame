@@ -22,7 +22,7 @@ const good = () => ({
     "Next time a strong feeling arrives, pause and ask what color it has taken on.",
     "Notice one person whose response to you this week felt steady and safe.",
   ],
-  carry: "Which feeling of yours arrives in disguise most often, and what would it say without the costume?",
+  prompt_id: "SP-16",
 });
 
 const mutate = (fn) => { const r = good(); fn(r); return checkReading(r, spread); };
@@ -36,18 +36,15 @@ test("structure: four sections in reading order and exactly three actions", () =
   assert.ok(mutate((r) => r.sections.reverse()).includes("sections"));
   assert.ok(mutate((r) => r.actions.push("A fourth action.")).includes("actions"));
   assert.ok(mutate((r) => { r.title = " "; }).includes("shape"));
-  assert.ok(mutate((r) => { delete r.carry; }).includes("shape"));
   assert.deepEqual(checkReading(null, spread), ["shape"]);
 });
 
-test("length: whole reading under 350 words, actions and the carry question under 25 words", () => {
-  const total = (r) => [r.title, r.opening, ...r.sections.map((s) => s.text), ...r.actions, r.carry].join(" ").split(/\s+/).length;
+test("length: whole reading under 350 words, actions under 25 words", () => {
+  const total = (r) => [r.title, r.opening, ...r.sections.map((s) => s.text), ...r.actions].join(" ").split(/\s+/).length;
   const pad = (r, n) => { r.opening += " word".repeat(n - total(r)); };
   assert.deepEqual(mutate((r) => pad(r, 349)), []);
   assert.ok(mutate((r) => pad(r, 350)).includes("length"));
-  assert.ok(mutate((r) => { r.carry = "Why ".repeat(25).trim() + "?"; }).includes("carry-length"));
-  assert.ok(mutate((r) => { r.carry = "Think about who taught you that."; }).includes("carry-question"));
-  assert.ok(mutate((r) => { r.carry = "What did “enough” mean in your house?"; }).includes("quotes"));
+  assert.ok(mutate((r) => { r.actions[2] = "Ask what “enough” meant in your house."; }).includes("quotes"));
   assert.ok(mutate((r) => { r.actions[0] = "word ".repeat(25); }).includes("action-length"));
 });
 
@@ -185,4 +182,23 @@ test("the retry note reaches the model in the user message", async () => {
   const fake = { beta: { messages: { create: async (p) => { sent = p; return ok; } } }, messages: { create: async (p) => { sent = p; return ok; } } };
   await generate(spread, ["attributions"], fake);
   assert.match(sent.messages[0].content, /The Lighthouse of Triumph[\s\S]*rejected by the app's automatic checks[\s\S]*research list/);
+});
+
+test("the model chooses a question by ID from shame_prompts.json; SP-20 is never offered", async () => {
+  const { userMessage, readingSchema, PROMPT_OPTIONS } = await import("../lib/prompt.js");
+  const msg = userMessage(spread);
+  assert.match(msg, /return only its ID as prompt_id/);
+  assert.match(msg, /SP-13 · Defensive · depth 1 · When shame lands, which way do you move\?/);
+  assert.ok(!msg.includes("SP-20") && !/source_note|Nummenmaa|Kaufman/.test(msg));
+  assert.equal(PROMPT_OPTIONS.length, 20);
+  assert.deepEqual(readingSchema(spread).properties.prompt_id.enum, PROMPT_OPTIONS.map((p) => p.id));
+  assert.ok(!("carry" in readingSchema(spread).properties));
+});
+
+test("an invalid or held-back prompt_id comes back as null, so the app falls back to SP-08", async () => {
+  const pick = async (prompt_id) => (await createReading(spread, async () => ({ ...good(), prompt_id }))).reading.prompt_id;
+  assert.equal(await pick("SP-16"), "SP-16");
+  assert.equal(await pick("SP-20"), null);
+  assert.equal(await pick("SP-99"), null);
+  assert.equal(await pick(undefined), null);
 });

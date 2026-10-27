@@ -72,3 +72,14 @@ test("selection is deterministic for a given random source", () => {
   const a = pickPrompt(data, "tab", { rand: seq(0.1) }).id;
   assert.equal(pickPrompt(data, "tab", { rand: seq(0.1) }).id, a);
 });
+
+test("the button under a reading opens the model's chosen prompt, with SP-08 as the fallback", async () => {
+  const { promptForReading } = await import("../frontend/js/prompt-rules.js");
+  assert.equal(promptForReading(data, "SP-16", null).id, "SP-16");
+  assert.equal(promptForReading(data, "SP-10", { id: "SP-02", depth: 2 }).id, "SP-10");
+  // Never two depth-3 prompts in a row: the device's last prompt was depth 3.
+  assert.equal(promptForReading(data, "SP-10", { id: "SP-17", depth: 3 }).id, "SP-08");
+  assert.equal(promptForReading(data, "SP-20", null).id, "SP-08");
+  assert.equal(promptForReading(data, "SP-99", null).id, "SP-08");
+  assert.equal(promptForReading(data, null, null).id, "SP-08");
+});

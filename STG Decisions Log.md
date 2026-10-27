@@ -44,6 +44,9 @@ One line per decision. Newest at the bottom. Once a decision is here, it is sett
 | 2026-10-27 | No counting of prompt opens or completions; learn whether testers use the button through the feedback form | Keeps "no analytics" (2026-10-18) |
 | 2026-10-27 | SP-08 offers the player's two chosen Shame cards (and "Another card") as its answer choices | Players choose cards; there is no single drawn card |
 | 2026-10-27 | SP-20 held back until its unlock rule is built; source notes are not shown to players and not fed to AI readings | Brief's out-of-scope list; source notes name people outside the approved list and use the word "therapy" |
+| 2026-10-27 | Readings no longer show "A question to carry". A reading ends with its three steps, then the "A Question for You" button; only one question is ever on screen | Paul's revised Shame Prompts brief |
+| 2026-10-27 | The reading's AI chooses (never writes) one question from shame_prompts.json and returns its ID; the question stays hidden until the player taps. SP-20 is never offered; a deep question right after a deep one, or a missing ID, falls back to SP-08 | Questions stay Paul's wording; the depth rule is checked on the device so the browser still sends only four card IDs |
+| 2026-10-27 | New disclaimer under every reading (988 call/text/chat links, findahelpline.com for outside the US), and "988 Suicide & Crisis Lifeline: call or text 988" in the question screens' header. "In Costa Rica, call 911" added for retreat week; no local Costa Rican number until Paul confirms one | Clearer route to help, including abroad |
 
 ## Parking lot
 

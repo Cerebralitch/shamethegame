@@ -51,6 +51,20 @@ export function pickPrompt(data, entry, { shameCards = [], last = null, usedThis
 }
 
 /**
+ * The prompt for the button under a reading: the one the reading's model chose, if it may be offered now,
+ * otherwise SP-08 (the card-reference prompt). The depth-3 rule is checked here because only the device
+ * knows the last prompt; the browser never sends it to the server.
+ * @param {string | null} chosenId the reading's prompt_id
+ * @param {{id: string, depth: number} | null} last
+ */
+export function promptForReading(data, chosenId, last) {
+  const chosen = data.prompts.find((p) => p.id === chosenId);
+  const tooDeep = data.session_rules.no_consecutive_depth_3 && last?.depth === 3 && chosen?.depth === 3;
+  if (chosen && !HELD_BACK.has(chosen.id) && !tooDeep) return chosen;
+  return data.prompts.find((p) => p.game_link === "card_reference") ?? null;
+}
+
+/**
  * The closing prompt to finish a sitting, or null if none is needed.
  * A prompt that names a required follow-up (SP-20 -> SP-21) always gets that one.
  * After a depth-3 prompt the closing is kept light: SP-18 (itself depth 2) is skipped.
