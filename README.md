@@ -13,7 +13,7 @@ Start with `START-HERE-first-prompt.md` for the project brief and documents.
 | `lib/` | Server code: deck loading, prompt building, reading checks, usage limit. |
 | `test/` | Automated checks for the server code (`npm test`). |
 | `stg-cards-v1.1.json` | The deck. Edit names, copy or `status` here; no code changes needed. |
-| `stg-reading-instructions-v0.2.md` | The reading prompt. Everything under "## Instructions" is sent to the model, and the approved-names table is also what the server checks against. |
+| `stg-reading-instructions-v0.3.md` | The reading prompt. Everything under "## Instructions" is sent to the model. Its two tables of voices (research and perspective) are also the list the server checks names against. |
 
 ## Run it on your computer
 

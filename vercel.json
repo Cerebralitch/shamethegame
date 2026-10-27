@@ -6,7 +6,7 @@
   "functions": {
     "api/*.js": {
       "maxDuration": 90,
-      "includeFiles": "{stg-cards-v1.1.json,stg-reading-instructions-v0.2.md}"
+      "includeFiles": "{stg-cards-v1.1.json,stg-reading-instructions-v0.3.md}"
     }
   },
   "headers": [

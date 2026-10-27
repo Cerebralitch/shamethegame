@@ -150,6 +150,9 @@ button:focus-visible,label:focus-within{outline:2px solid var(--gilt);outline-of
 .rd-acts ol{margin:0;padding:0;list-style:none;counter-reset:act;display:flex;flex-direction:column;gap:10px}
 .rd-acts li{counter-increment:act;display:flex;gap:12px}
 .rd-acts li::before{content:counter(act);font:600 18px/1.35 var(--display);color:var(--gilt);flex:none;width:14px}
+.rd-carry{margin-top:6px;padding:22px 18px;border:1px solid var(--line);border-radius:6px;background:rgba(255,255,255,.03);display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.rd-carry .t{font:600 11px/1 var(--ui);letter-spacing:.16em;text-transform:uppercase;color:var(--gilt)}
+.rd-carry p{margin:0;font:italic 21px/1.4 var(--body);color:var(--bone);text-wrap:balance}
 .wait{padding:28px 0;text-align:center;font-style:italic;color:var(--pewter);animation:breathe 2.4s ease-in-out infinite}
 @keyframes breathe{50%{opacity:.45}}
 .oops{border:1px dashed var(--line);border-radius:6px;padding:18px 16px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
@@ -425,13 +428,15 @@ function showReading(){
   $("rdBody").innerHTML = `<p class="rd-opening">${esc(reading.opening)}</p>` +
     reading.sections.map(s=>{ const c = byId[s.card_id];
       return `<section class="rd-sec"><span class="t">${TYPE[c.type]}</span><h3>${esc(c.name)}</h3><p>${esc(s.text)}</p></section>`; }).join("") +
-    `<section class="rd-acts"><h3>Three things to try this week</h3><ol>${reading.actions.map(a=>`<li><span>${esc(a)}</span></li>`).join("")}</ol></section>`;
+    `<section class="rd-acts"><h3>Three things to try this week</h3><ol>${reading.actions.map(a=>`<li><span>${esc(a)}</span></li>`).join("")}</ol></section>` +
+    `<section class="rd-carry"><span class="t">A question to carry</span><p>${esc(reading.carry)}</p></section>`;
   $("share").hidden = false;
 }
 function readingText(){
   return [reading.title, reading.opening,
     ...reading.sections.map(s=>`${byId[s.card_id].name}\n${s.text}`),
     "Three things to try this week\n" + reading.actions.map((a,i)=>`${i+1}. ${a}`).join("\n"),
+    "A question to carry\n" + reading.carry,
     SUPPORT].join("\n\n");
 }
 async function share(){
