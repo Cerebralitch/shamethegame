@@ -9,7 +9,7 @@ try { process.loadEnvFile?.(".env"); } catch { /* no .env file */ }
 
 const ROOT = fileURLToPath(new URL("../frontend/", import.meta.url));
 const PORT = Number(process.env.PORT) || 3000;
-const TYPES = { ".html": "text/html; charset=utf-8", ".webp": "image/webp", ".woff2": "font/woff2", ".css": "text/css", ".js": "text/javascript", ".txt": "text/plain" };
+const TYPES = { ".html": "text/html; charset=utf-8", ".webp": "image/webp", ".png": "image/png", ".jpg": "image/jpeg", ".woff2": "font/woff2", ".css": "text/css", ".js": "text/javascript", ".txt": "text/plain" };
 const API = { "/api/cards": () => import("../api/cards.js"), "/api/reading": () => import("../api/reading.js"), "/api/prompts": () => import("../api/prompts.js") };
 
 createServer(async (req, res) => {
