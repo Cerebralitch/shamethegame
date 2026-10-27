@@ -1,8 +1,8 @@
 {
   "deck": "Shame: The Game",
-  "version": "1.1",
+  "version": "1.1.1",
   "date": "2026-10-25",
-  "status": "Approved by Paul 2026-10-25. v1 card names and art, corrected copy.",
+  "status": "Approved by Paul 2026-10-25. 1.1.1 (2026-10-27): researcher names removed from two engine notes; player-facing copy unchanged.",
   "spread": {
     "worth": 1,
     "shame": 2,
@@ -22,7 +22,7 @@
       "status": "approved",
       "copy": "Shame is rarely the feeling we notice first. Like a chameleon, it takes on the color of whatever is nearby: it can look like irritation, numbness, perfectionism, a sudden urge to hide, or anger at someone else. Because it changes color so easily, it can go unnamed for years. This card invites you to look beneath the feeling that is easiest to see and ask what might be underneath it. You don't need to catch the chameleon all at once. Noticing the moment its colors shift is a start.",
       "engine": {
-        "evidence": "Shame often goes unacknowledged (Scheff) and shows up as withdrawal, avoidance, attacking oneself or attacking others (Nathanson): Moderate as theory.",
+        "evidence": "Shame often goes unacknowledged, and shows up as withdrawal, avoidance, attacking oneself or attacking others: Moderate as theory.",
         "must_not": [
           "Tell the player that what they feel is really shame",
           "Name mental-health conditions such as depression or anxiety"
@@ -52,7 +52,7 @@
       "status": "approved",
       "copy": "Some chains can't be seen, but you feel their weight. This one is forged from past mistakes, regrets, and moments you wish you could take back, and it can quietly keep you from new chances and closer connections. This card invites you to examine the links one at a time. Some may point to a real harm that calls for repair, and repair can be a way forward. Others may be old judgments you have carried far longer than the mistake deserved. Telling the two apart is how the chain begins to loosen.",
       "engine": {
-        "evidence": "Shame focuses on the whole self, guilt on the act (Tangney): Moderate to Strong. Shame can motivate repair when repair seems possible (Leach and Cidam): Moderate.",
+        "evidence": "Shame focuses on the whole self, guilt on the act: Moderate to Strong. Shame can motivate repair when repair seems possible: Moderate.",
         "must_not": [
           "Absolve the player of real harm without room for accountability",
           "Promise freedom from the past"

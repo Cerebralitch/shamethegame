@@ -1,6 +1,6 @@
 # Shame: The Game — Reading Instructions
 
-Version 0.3 · 2026-10-26 · Draft for Paul's review
+Version 0.3.1 · 2026-10-27 · Draft for Paul's review (adds a rule that engine notes are not a source of names)
 Replaces v0.2. Changes: a voice with edge, no restating card copy, a closing question to carry, an expanded list of voices (researchers and perspectives), and a word limit of 350.
 
 **How the app uses this file:** the server sends everything under "Instructions" as the system prompt, then appends the four chosen cards (name, type, copy, engine notes) from `stg-cards-v1.1.json`. Nothing else is sent. The section "For Paul and Claude Code" is not sent.
@@ -76,6 +76,7 @@ You may bring in **up to three** of the people below, **at most one** of them fr
 - **Never use quotation marks** for anyone's words. Never write a quote, even a short one, and never a famous line.
 - **Never give statistics, study results, or phrases like "research shows" or "studies prove."**
 - **Never name anyone not on this list**, and never name a book, poem or film by a real author unless it is listed below. If an idea isn't here, express it without a name.
+- **Card engine notes are background, not a source of names.** Any idea in them stands on its own; if you want to credit it, use the list below, and every name you use counts toward your limit.
 - **Research voices** support a point about how shame works: "June Tangney's work distinguishes…". **Perspective voices** offer a way of seeing: "Kierkegaard wrote about…". Never present a perspective voice as scientific proof.
 
 **Research voices** (about how shame works)
