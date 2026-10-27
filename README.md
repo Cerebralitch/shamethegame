@@ -12,6 +12,7 @@ Start with `START-HERE-first-prompt.md` for the project brief and documents.
 | `api/reading.js` | Receives four card IDs and returns a checked reading. Holds the only use of the API key. |
 | `lib/` | Server code: deck loading, prompt building, reading checks, usage limit. |
 | `test/` | Automated checks for the server code (`npm test`). |
+| `shame_prompts.json` | "A Question for You" prompts. Served by `api/prompts.js` without source notes or language rules; the selection rules are in `frontend/js/prompt-rules.js`. |
 | `stg-cards-v1.1.json` | The deck. Edit names, copy or `status` here; no code changes needed. |
 | `stg-reading-instructions-v0.3.md` | The reading prompt. Everything under "## Instructions" is sent to the model. Its two tables of voices (research and perspective) are also the list the server checks names against. |
 

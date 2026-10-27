@@ -1,0 +1,281 @@
+{
+  "section": "Shame Prompts",
+  "version": "1.1",
+  "lenses": [
+    "Somatic",
+    "Relational",
+    "Defensive",
+    "Pattern",
+    "Origin",
+    "Externalizing",
+    "Disclosure",
+    "Resilience"
+  ],
+  "depth_scale": {
+    "1": "Surface: noticing and naming",
+    "2": "Middle: patterns, relationships, defenses",
+    "3": "Deep: origins and disclosure; requires a closing prompt"
+  },
+  "session_rules": {
+    "prompts_per_session": 1,
+    "timer_default_minutes": 15,
+    "timer_max_minutes": 20,
+    "timer_optional": true,
+    "no_consecutive_depth_3": true,
+    "closing_required_at_depth": [
+      2,
+      3
+    ],
+    "closing_prompt_ids": [
+      "SP-18",
+      "SP-21",
+      "GROUND-01"
+    ],
+    "unlock_rules": {
+      "SP-20": "Offer only after the user has completed at least 3 prompts; always follow with SP-21"
+    },
+    "always_visible": [
+      "close_prompt",
+      "crisis_resources"
+    ],
+    "crisis_resources": {
+      "us": "Call or text 988 (Suicide & Crisis Lifeline)"
+    },
+    "language_rules": [
+      "Ask 'what' and 'how', not 'why'",
+      "Invitational, not prosecutorial: avoid 'truly', 'really', 'should'",
+      "The user is the witness, not the defendant"
+    ]
+  },
+  "grounding": [
+    {
+      "id": "GROUND-01",
+      "prompt": "Before you close: what three things can you see, and one thing can you hear, right now?"
+    }
+  ],
+  "prompts": [
+    {
+      "id": "SP-01",
+      "origin": "original",
+      "lens": "Somatic",
+      "depth": 1,
+      "format": "text",
+      "prompt": "When shame arrives, where does it land first in your body?",
+      "follow_up": "What does it want your body to do: hide, shrink, freeze, flush?",
+      "source_note": "Nummenmaa and colleagues (PNAS, 2014) found people map emotions to consistent bodily locations across cultures. Tracy and Matsumoto (2008) observed the shame posture in congenitally blind athletes, suggesting it is innate. Tangney identifies the urge to hide as shame's defining action tendency."
+    },
+    {
+      "id": "SP-02",
+      "origin": "original",
+      "lens": "Defensive",
+      "depth": 2,
+      "format": "text",
+      "prompt": "What excuse do you give your shame for staying?",
+      "follow_up": "What would change if that excuse stopped working?",
+      "source_note": "Gershen Kaufman described 'shame binds', where shame fuses with needs and feelings so they become hard to separate. Shame that persists is often quietly agreed to, not simply suffered."
+    },
+    {
+      "id": "SP-03",
+      "origin": "original",
+      "lens": "Relational",
+      "depth": 2,
+      "format": "text",
+      "prompt": "Who has been most affected by your shame, besides yourself?",
+      "follow_up": "What would repair look like, even a small one?",
+      "source_note": "Tangney and Dearing show guilt (about a behavior) tends toward empathy and repair, while shame (about the self) tends toward hiding or blaming. This prompt moves attention from self-condemnation toward repair."
+    },
+    {
+      "id": "SP-04",
+      "origin": "original",
+      "lens": "Relational",
+      "depth": 2,
+      "format": "text",
+      "prompt": "Whose voice enforces the rules of your shame?",
+      "follow_up": "Whose voice was it originally?",
+      "source_note": "Kaufman describes how we internalize the voices of those who shamed us. Paul Gilbert distinguishes external shame (what I believe others think of me) from internal shame (what I think of myself)."
+    },
+    {
+      "id": "SP-05",
+      "origin": "original",
+      "lens": "Externalizing",
+      "depth": 1,
+      "format": "drawing",
+      "materials": "Paper and pencil",
+      "prompt": "What does your shame look like as a creature from your own mythology? Draw it, and give it a name.",
+      "follow_up": "What does it eat? When does it sleep?",
+      "source_note": "Michael White and David Epston's narrative therapy externalizes the problem: the person is not the problem. Cathy Malchiodi's art therapy work supports drawing as a route to material that words alone don't reach."
+    },
+    {
+      "id": "SP-06",
+      "origin": "original (merged from two prompts)",
+      "lens": "Externalizing",
+      "depth": 2,
+      "format": "drawing",
+      "materials": "Paper and pencil",
+      "prompt": "If your shame were a building (a castle, a corporate office, a dive bar), what would it be? Sketch its floor plan and name each room for a part of your shame.",
+      "follow_up": "Which room do you avoid? Is there a door out?",
+      "source_note": "Gaston Bachelard's 'The Poetics of Space' treats the house as the psyche's image of its own interior. Externalizing shame as architecture lets the user see its parts and their relations."
+    },
+    {
+      "id": "SP-07",
+      "origin": "original",
+      "lens": "Defensive",
+      "depth": 2,
+      "format": "text",
+      "prompt": "What quiets your shame: a practice, a substance, a place, a person?",
+      "follow_up": "Does it soothe you or numb you? What does the quiet cost you the next day?",
+      "source_note": "Dearing, Stuewig and Tangney (2005) linked shame-proneness, but not guilt-proneness, to problematic alcohol and drug use. Gilbert distinguishes the soothing system, which settles threat, from avoidance, which defers it."
+    },
+    {
+      "id": "SP-08",
+      "origin": "original",
+      "lens": "Pattern",
+      "depth": 1,
+      "format": "text",
+      "game_link": "card_reference",
+      "prompt": "Which shame card stopped you in your tracks with recognition?",
+      "follow_up": "In that moment, did you turn toward it or away from it?",
+      "source_note": "Brené Brown's shame resilience research identifies recognition and empathic connection ('me too') as central to reducing shame."
+    },
+    {
+      "id": "SP-09",
+      "origin": "original",
+      "lens": "Pattern",
+      "depth": 2,
+      "format": "text",
+      "prompt": "What sets off your shame that would barely touch most people?",
+      "follow_up": "When did that particular sensitivity first show up?",
+      "source_note": "Brown's 'unwanted identities' describes how shame triggers are specific to each person: the particular ways we most fear being seen."
+    },
+    {
+      "id": "SP-10",
+      "origin": "original",
+      "lens": "Disclosure",
+      "depth": 3,
+      "format": "text",
+      "prompt": "Who knows the full story of your shame?",
+      "follow_up": "What part have you never said aloud, and who might be safe enough to hear it someday?",
+      "source_note": "James Pennebaker's expressive-writing research links disclosure to improved wellbeing. Brown adds that shame should be shared with people who have earned the right to hear it."
+    },
+    {
+      "id": "SP-11",
+      "origin": "original",
+      "lens": "Pattern",
+      "depth": 1,
+      "format": "text",
+      "prompt": "When does your shame find you? Time of day, after which conversations, after success as well as failure?",
+      "follow_up": "What is usually happening just before it arrives?",
+      "source_note": "Treating shame as something that 'finds' you is a form of externalization (White and Epston). Brown describes the 'vulnerability hangover': shame that follows exposure, including after success."
+    },
+    {
+      "id": "SP-12",
+      "origin": "new",
+      "lens": "Origin",
+      "depth": 2,
+      "format": "text",
+      "prompt": "What did you want right before shame arrived?",
+      "follow_up": "Is that want still alive somewhere in you?",
+      "source_note": "Silvan Tomkins described shame as the incomplete interruption of interest or enjoyment. Shame appears only where there was first a desire."
+    },
+    {
+      "id": "SP-13",
+      "origin": "new",
+      "lens": "Defensive",
+      "depth": 1,
+      "format": "select_then_text",
+      "options": [
+        "Hide",
+        "Distract myself",
+        "Turn on myself",
+        "Turn on someone else"
+      ],
+      "prompt": "When shame lands, which way do you move?",
+      "follow_up": "Describe the last time you moved that way. What happened next?",
+      "source_note": "Donald Nathanson's Compass of Shame maps four defensive scripts: withdrawal, avoidance, attack self, and attack other."
+    },
+    {
+      "id": "SP-14",
+      "origin": "new",
+      "lens": "Resilience",
+      "depth": 2,
+      "format": "text",
+      "prompt": "What changes when you write one thing you feel bad about twice: once as 'I did…' and once as 'I am…'?",
+      "follow_up": "Which sentence is true?",
+      "source_note": "June Tangney's central distinction: guilt focuses on behavior ('I did a bad thing'), shame on the self ('I am bad'). Guilt is the more adaptive of the two."
+    },
+    {
+      "id": "SP-15",
+      "origin": "new",
+      "lens": "Pattern",
+      "depth": 2,
+      "format": "text",
+      "prompt": "What do you most fear being seen as?",
+      "follow_up": "Who in your life could see you that way, and who never would?",
+      "source_note": "Brené Brown's 'unwanted identities': the specific identities a person most fears being associated with sit at the core of their shame."
+    },
+    {
+      "id": "SP-16",
+      "origin": "new",
+      "lens": "Defensive",
+      "depth": 2,
+      "format": "text",
+      "prompt": "What does your shame wear in public: anger, humor, perfectionism, charm?",
+      "follow_up": "Who sees through the costume?",
+      "source_note": "Helen Block Lewis described 'bypassed shame', converted into another state before it can be felt. Thomas Scheff traced how unacknowledged shame can spiral into rage."
+    },
+    {
+      "id": "SP-17",
+      "origin": "new",
+      "lens": "Origin",
+      "depth": 3,
+      "format": "text",
+      "prompt": "What shame did you inherit that was never yours to carry?",
+      "follow_up": "Who handed it to you, and who handed it to them?",
+      "source_note": "Ilan Meyer's minority stress model (2003) shows how stigma held by a culture becomes internalized by individuals. Shame is often passed down through families and communities."
+    },
+    {
+      "id": "SP-18",
+      "origin": "new",
+      "lens": "Resilience",
+      "depth": 2,
+      "format": "text",
+      "closing_eligible": true,
+      "prompt": "If your shame were trying to protect you, what would it be protecting?",
+      "follow_up": "Is there a better way to give it that protection now?",
+      "source_note": "Richard Schwartz's Internal Family Systems describes protective parts. Paul Gilbert frames shame in evolutionary terms as a system for staying in the group."
+    },
+    {
+      "id": "SP-19",
+      "origin": "new",
+      "lens": "Resilience",
+      "depth": 1,
+      "format": "text",
+      "prompt": "Think of a time shame passed through you without taking over. What was different?",
+      "follow_up": "Which part of that could you recreate on purpose?",
+      "source_note": "Steve de Shazer's 'exception question' from solution-focused therapy, applied to Brown's shame resilience: build on what already works."
+    },
+    {
+      "id": "SP-20",
+      "origin": "new",
+      "lens": "Origin",
+      "depth": 3,
+      "format": "text",
+      "requires_followup_id": "SP-21",
+      "prompt": "What is the earliest moment you remember feeling it? How old were you, and who was in the room?",
+      "follow_up": "What did that younger you need from the people in that room?",
+      "source_note": "Gershen Kaufman locates the origin of shame in the breaking of the 'interpersonal bridge': a rupture in the bond with someone we needed."
+    },
+    {
+      "id": "SP-21",
+      "origin": "new",
+      "lens": "Resilience",
+      "depth": 1,
+      "format": "text",
+      "closing_eligible": true,
+      "prompt": "What would someone who loves you without conditions say to you right now? Write it in their voice.",
+      "follow_up": "Which line do you most need to hear again?",
+      "source_note": "The compassionate letter from Paul Gilbert's Compassion-Focused Therapy, supported by Kristin Neff's research on self-compassion."
+    }
+  ],
+  "button_label": "A Question for You"
+}

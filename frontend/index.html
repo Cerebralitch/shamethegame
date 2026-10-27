@@ -12,6 +12,7 @@
 @font-face{font-family:"Cormorant SC";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/cormorant-sc-latin-600.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
 @font-face{font-family:"EB Garamond";font-style:italic;font-weight:400;font-display:swap;src:url("fonts/eb-garamond-italic-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
 @font-face{font-family:"EB Garamond";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/eb-garamond-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Cinzel";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/cinzel-latin-700.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
 @font-face{font-family:"EB Garamond";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/eb-garamond-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
 html,body{margin:0}
 
@@ -172,7 +173,46 @@ button:focus-visible,label:focus-within{outline:2px solid var(--gilt);outline-of
 .ab .help p+p{margin-top:8px}
 .back{align-self:flex-start;font:500 14px var(--ui);color:var(--pewter);padding:6px 0}
 
-@media (prefers-reduced-motion:reduce){.screen,.sheet,.begin,.slot .face,.wait{transition:none;animation:none}}
+/* "A Question for You": the plaque button (one component, used after a reading and on Reflect) */
+.plaque{position:relative;display:block;width:min(92%,380px);aspect-ratio:1064/211;min-height:44px;margin:0 auto;padding:0;
+  background:url("img/plaque.webp") center/100% 100% no-repeat;container-type:inline-size;transition:transform .12s ease,filter .12s ease}
+.plaque span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0 22%;white-space:nowrap;
+  font:700 clamp(10px,4.3cqw,19px)/1 "Cinzel",var(--display);letter-spacing:.06em;text-transform:uppercase;color:#1a1a1a;text-shadow:0 1px 0 rgba(255,255,255,.6)}
+.plaque:active{transform:scale(.97);filter:brightness(.85)}
+.plaque.glow{animation:plaqueGlow 2s ease-out 1}
+@keyframes plaqueGlow{0%{filter:drop-shadow(0 0 0 rgba(201,162,76,0))}40%{filter:drop-shadow(0 0 16px rgba(201,162,76,.7))}100%{filter:drop-shadow(0 0 0 rgba(201,162,76,0))}}
+.ask{padding:8px 0 2px}
+#reflect{background:linear-gradient(180deg,var(--night),var(--ink) 50%);overflow-y:auto}
+.rf{padding:24px 16px 48px;display:flex;flex-direction:column;gap:16px}
+.rf h2{font:600 30px/1.1 var(--display);margin:0}
+.rf p{margin:0;color:var(--pewter)}
+.rf .plaque{margin-top:18px}
+
+/* The question flow: one quiet screen per step, with 988 and Close always in the header */
+#qa{background:var(--ink);z-index:40}
+.qa-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:calc(10px + env(safe-area-inset-top,0px)) 8px 10px 16px;
+  border-bottom:1px solid var(--line);background:rgba(8,11,23,.96)}
+.qa-988{font:500 13px/1.3 var(--ui);color:var(--bone);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+.qa-close{flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;font:400 30px/1 var(--ui);color:var(--pewter)}
+.qa-timer{padding:8px 16px 0;font:500 13px var(--ui);color:var(--gilt);text-align:center;font-variant-numeric:tabular-nums}
+.qa-body{flex:1;overflow-y:auto;padding:40px 22px 40px;display:flex;flex-direction:column;justify-content:center;gap:22px;text-align:center}
+.qa-q{margin:0;font:italic 26px/1.35 var(--body);color:var(--bone);text-wrap:balance}
+.qa-small{margin:0;font:italic 19px/1.4 var(--body);color:var(--pewter);text-wrap:balance}
+.qa-note{margin:0;color:var(--pewter);font-size:16px}
+.qa-row{display:flex;flex-direction:column;align-items:center;gap:10px}
+.qa-timerset{display:flex;align-items:center;justify-content:center;gap:10px;font:500 14px var(--ui);color:var(--pewter)}
+.qa-timerset input{width:20px;height:20px;accent-color:var(--gilt)}
+.qa-timerset select{font:inherit;color:var(--bone);background:var(--night);border:1px solid var(--line);border-radius:6px;padding:6px 8px}
+.qa-opts{display:flex;flex-direction:column;gap:10px;align-items:stretch;max-width:320px;width:100%;margin:0 auto}
+.qa-opt{padding:13px 16px;border:1px solid var(--line);border-radius:8px;font-size:18px;background:rgba(255,255,255,.03)}
+.qa-opt:active{background:rgba(201,162,76,.15)}
+.qa-cards{display:flex;justify-content:center;gap:14px}
+.qa-card{width:min(38%,150px);display:flex;flex-direction:column;gap:8px;align-items:center;font:500 14px/1.25 var(--body)}
+.qa-card .face{width:100%;aspect-ratio:540/932;border-radius:6px;overflow:hidden}
+.qa-card .face img{width:100%;height:100%;object-fit:contain;display:block}
+.qa-chosen{font:600 11px/1 var(--ui);letter-spacing:.16em;text-transform:uppercase;color:var(--gilt)}
+
+@media (prefers-reduced-motion:reduce){.screen,.sheet,.begin,.slot .face,.wait,.plaque{transition:none;animation:none}}
 </style>
 </head>
 <body>
@@ -214,7 +254,7 @@ button:focus-visible,label:focus-within{outline:2px solid var(--gilt);outline-of
     <div class="scroll" id="scroll"></div>
     <div class="dock">
       <button class="metal" id="read" disabled>Read my cards</button>
-      <div class="nav"><button id="toAbout">About &amp; Support</button></div>
+      <div class="nav"><button id="toReflect">Reflect</button><button id="toAbout">About &amp; Support</button></div>
     </div>
   </section>
 
@@ -230,6 +270,24 @@ button:focus-visible,label:focus-within{outline:2px solid var(--gilt);outline-of
         <button class="textbtn" id="again">New reading</button>
       </div>
     </div>
+  </section>
+
+  <section class="screen" id="reflect" hidden aria-label="Reflect">
+    <div class="rf">
+      <button class="back" id="fromReflect">← Back to cards</button>
+      <h2>Reflect</h2>
+      <p>One question at a time, to answer on paper, at your own pace.</p>
+      <button class="plaque" data-ask="tab" aria-label="A question for you"><span>A Question for You</span></button>
+    </div>
+  </section>
+
+  <section class="screen" id="qa" hidden aria-label="A question for you">
+    <header class="qa-top">
+      <a class="qa-988" href="tel:988">Call or text 988 (Suicide &amp; Crisis Lifeline)</a>
+      <button class="qa-close" id="qaClose" aria-label="Close">×</button>
+    </header>
+    <div class="qa-timer" id="qaTimer" role="timer" hidden></div>
+    <div class="qa-body" id="qaBody" aria-live="polite"></div>
   </section>
 
   <section class="screen" id="about" hidden aria-label="About and Support">
@@ -255,7 +313,7 @@ button:focus-visible,label:focus-within{outline:2px solid var(--gilt);outline-of
         <li>We don't save your readings or the cards you choose, and we don't keep records of them.</li>
         <li>Your reading exists only on your screen. When you close the page, it's gone. To keep one, use Share.</li>
         <li>There are no ads, no trackers, and no accounts.</li>
-        <li>The app remembers one thing on your own device: that you've already seen the welcome screen.</li>
+        <li>The app remembers two things on your own device: that you've already seen the welcome screen, and which reflection question you saw last, so it doesn't offer two of the deepest questions in a row. It never keeps your answers.</li>
       </ul>
       <h3>Talk to someone</h3>
       <p>If you're struggling, or something here brought up more than you expected, you don't have to sit with it alone.</p>
@@ -323,7 +381,7 @@ function noArt(img){
   img.outerHTML = placeholder(c, img.hasAttribute("data-small"));
 }
 function show(id){
-  for (const s of ["splash","welcome","builder","reading","about"]) $(s).hidden = s!==id;
+  for (const s of ["splash","welcome","builder","reading","about","reflect","qa"]) $(s).hidden = s!==id;
   $(id).scrollTop = 0;
 }
 const order = [["worth",0],["shame",0],["shame",1],["activation",0]];
@@ -390,9 +448,11 @@ function act(){
 
 // The reading lives in memory only, and only until New reading or the page closes.
 let reading = null, readingRun = 0, readingAbort = null;
+let readShame = []; // the Shame cards of this visit's latest reading, for "A Question for You"; never stored
 const SUPPORT = "This reading is AI-generated reflection, not therapy. If something here stirred up more than you expected, you can call, text or chat 988 anytime. It's free and confidential.";
 
 function toReading(){
+  readShame = [...sel.shame];
   $("spread").innerHTML = order.map(([t],i)=>`<div><div class="face">${face(chosenAt(i),true)}</div><div class="lbl">${TYPE[t]}</div></div>`).join("");
   show("reading");
   requestReading();
@@ -429,7 +489,8 @@ function showReading(){
     reading.sections.map(s=>{ const c = byId[s.card_id];
       return `<section class="rd-sec"><span class="t">${TYPE[c.type]}</span><h3>${esc(c.name)}</h3><p>${esc(s.text)}</p></section>`; }).join("") +
     `<section class="rd-acts"><h3>Three things to try this week</h3><ol>${reading.actions.map(a=>`<li><span>${esc(a)}</span></li>`).join("")}</ol></section>` +
-    `<section class="rd-carry"><span class="t">A question to carry</span><p>${esc(reading.carry)}</p></section>`;
+    `<section class="rd-carry"><span class="t">A question to carry</span><p>${esc(reading.carry)}</p></section>` +
+    `<div class="ask"><button class="plaque glow" data-ask="reading" aria-label="A question for you"><span>A Question for You</span></button></div>`;
   $("share").hidden = false;
 }
 function readingText(){
@@ -455,6 +516,88 @@ function reset(){
   readingRun++; readingAbort?.abort(); reading = null;
   sel = {shame:[],worth:[],activation:[]}; render();
 }
+
+// "A Question for You" (Shame Prompts). Answers happen on paper; nothing typed or chosen here is kept.
+// The device remembers only the last prompt's ID and depth (for the no-two-deep-prompts-in-a-row rule).
+const LAST_PROMPT_KEY = "stg-last-prompt";
+function lastPrompt(){ try { return JSON.parse(localStorage.getItem(LAST_PROMPT_KEY)) || null; } catch { return null; } }
+function rememberPrompt(p){ try { localStorage.setItem(LAST_PROMPT_KEY, JSON.stringify({id: p.id, depth: p.depth})); } catch {} }
+
+let promptsLoading, promptRules;
+function loadPrompts(){
+  promptsLoading ??= Promise.all([
+    fetch("/api/prompts").then(r=>{ if (!r.ok) throw new Error(); return r.json(); }),
+    import("./js/prompt-rules.js"),
+  ]).then(([data, rules])=>{ promptRules = rules; return data; }).catch(e=>{ promptsLoading = null; throw e; });
+  return promptsLoading;
+}
+
+const usedThisVisit = new Set();
+let qa = null, qaReturn = "builder", qaTick = null;
+
+async function openQuestion(entry){
+  qaReturn = entry==="reading" ? "reading" : "reflect";
+  qa = null; stopTimer();
+  show("qa");
+  $("qaBody").innerHTML = `<p class="qa-note">One moment…</p>`;
+  let data;
+  try { data = await loadPrompts(); }
+  catch { $("qaBody").innerHTML = `<p class="qa-note">The question couldn't be loaded. Check your connection and try again.</p><div class="qa-row"><button class="metal" data-qa="retry" data-entry="${entry}">Try again</button></div>`; return; }
+  const prompt = promptRules.pickPrompt(data, entry, {shameCards: readShame, last: lastPrompt(), usedThisVisit});
+  if (!prompt) { $("qaBody").innerHTML = `<p class="qa-note">There's no question to offer right now. Please come back another time.</p>`; return; }
+  usedThisVisit.add(prompt.id); rememberPrompt(prompt);
+  qa = {prompt, closing: promptRules.closingFor(data, prompt), choice: null, step: "prompt"};
+  renderQa();
+}
+
+function renderQa(){
+  const {prompt, closing, choice, step} = qa;
+  const opts = prompt.game_link==="card_reference" ? "cards" : prompt.format==="select_then_text" ? "options" : null;
+  let html = "";
+  if (step==="prompt") {
+    html = `<div class="eyebrow">A question for you</div><p class="qa-q">${esc(prompt.prompt)}</p>
+      <label class="qa-timerset"><input type="checkbox" id="qaUseTimer"> Use a timer
+        <select id="qaMinutes" aria-label="Timer length in minutes">${[5,10,15,20].map(m=>`<option value="${m}"${m===15?" selected":""}>${m} minutes</option>`).join("")}</select></label>
+      <div class="qa-row"><button class="metal" data-qa="begin">Begin</button></div>`;
+  } else if (step==="respond" && opts && !choice) {
+    html = `<p class="qa-small">${esc(prompt.prompt)}</p>` + (opts==="cards"
+      ? `<div class="qa-cards">${readShame.map(id=>`<button class="qa-card" data-choice="${esc(byId[id].name)}"><span class="face">${face(id,true)}</span>${esc(byId[id].name)}</button>`).join("")}</div>
+         <div class="qa-opts"><button class="qa-opt" data-choice="Another card">Another card</button></div>`
+      : `<div class="qa-opts">${prompt.options.map(o=>`<button class="qa-opt" data-choice="${esc(o)}">${esc(o)}</button>`).join("")}</div>`);
+  } else if (step==="respond") {
+    html = `<p class="qa-small">${esc(prompt.prompt)}</p>` +
+      (choice ? `<div><div class="qa-chosen">Your answer</div><p class="qa-q">${esc(choice)}</p></div>` : "") +
+      `<p class="qa-note">Take some time with this on paper. You'll need: ${esc(prompt.materials || "paper and a pencil").toLowerCase()}.</p>
+       <div class="qa-row"><button class="metal" data-qa="next">I've finished</button></div>`;
+  } else if (step==="follow") {
+    html = `<div class="eyebrow">And then</div><p class="qa-q">${esc(prompt.follow_up)}</p>
+      <div class="qa-row"><button class="metal" data-qa="next">${closing ? "Continue" : "Done"}</button></div>`;
+  } else if (step==="closing") {
+    html = `<div class="eyebrow">Before you close</div><p class="qa-q">${esc(closing.prompt)}</p>
+      <div class="qa-row"><button class="metal" data-qa="next">Finish</button></div>`;
+  } else {
+    stopTimer();
+    html = `<p class="qa-q">That's your question for now.</p><div class="qa-row"><button class="textbtn" data-qa="close">Close</button></div>`;
+  }
+  $("qaBody").innerHTML = html;
+  $("qaBody").scrollTop = 0;
+}
+function nextQaStep(){
+  qa.step = {prompt:"respond", respond:"follow", follow: qa.closing ? "closing" : "end", closing:"end"}[qa.step];
+  renderQa();
+}
+
+function startTimer(minutes){
+  const end = Date.now() + minutes*60000;
+  const tick = ()=>{
+    const left = Math.max(0, Math.round((end-Date.now())/1000));
+    $("qaTimer").textContent = left ? `${Math.floor(left/60)}:${String(left%60).padStart(2,"0")} left` : "Time's up. Finish your thought, then continue.";
+    if (!left) stopTimer(true);
+  };
+  $("qaTimer").hidden = false; tick(); qaTick = setInterval(tick, 1000);
+}
+function stopTimer(keepText){ clearInterval(qaTick); qaTick = null; if (!keepText) $("qaTimer").hidden = true; }
+function closeQuestion(){ stopTimer(); qa = null; show(qaReturn); }
 
 let splashTimer;
 function leaveSplash(){
@@ -489,6 +632,21 @@ $("share").addEventListener("click", share);
 $("again").addEventListener("click", ()=>{ reset(); show("builder"); });
 $("toAbout").addEventListener("click", ()=>show("about"));
 $("fromAbout").addEventListener("click", ()=>show("builder"));
+$("toReflect").addEventListener("click", ()=>show("reflect"));
+$("fromReflect").addEventListener("click", ()=>show("builder"));
+document.addEventListener("click", e=>{ const b = e.target.closest("[data-ask]"); if (b) openQuestion(b.dataset.ask); });
+$("qaClose").addEventListener("click", closeQuestion);
+$("qaBody").addEventListener("click", e=>{
+  const c = e.target.closest("[data-choice]");
+  if (c && qa) { qa.choice = c.dataset.choice; renderQa(); return; }
+  const b = e.target.closest("[data-qa]"); if (!b) return;
+  const act = b.dataset.qa;
+  if (act==="retry") openQuestion(b.dataset.entry);
+  else if (act==="close") closeQuestion();
+  else if (act==="begin") { if ($("qaUseTimer").checked) startTimer(Math.min(20, +$("qaMinutes").value)); nextQaStep(); }
+  else if (act==="next") nextQaStep();
+});
+document.addEventListener("keydown", e=>{ if (e.key==="Escape" && !$("qa").hidden) closeQuestion(); });
 start();
 </script>
 
