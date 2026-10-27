@@ -7,7 +7,7 @@ This folder holds everything for the build:
 - `stg-cards-v1.1.json` is the approved deck (28 cards). The app reads card names and copy from this file; never retype them into code.
 - `cards/` holds the 28 full-resolution card masters, named by card ID. The web-ready versions (cropped, WebP) are already in `frontend/img/cards/`; use those.
 - `splash.png`, `welcome-bg.png` and `button-begin.png` are full-resolution masters; web-ready WebP versions are in `frontend/img/`.
-- `stg-reading-instructions-v0.2.md` is the AI reading prompt. The server sends it with the four chosen cards' data and expects the JSON format it describes.
+- `stg-reading-instructions-v0.3.md` is the AI reading prompt. The server sends it with the four chosen cards' data and expects the JSON format it describes.
 - `STG Welcome and Support Copy v0.2 2026-10-25.md` is the final text for the Welcome screen, About & Support page and the line under every reading.
 - `STG Decisions Log.md` records decisions already made. Don't reopen them.
 

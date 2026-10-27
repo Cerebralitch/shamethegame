@@ -1,5 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { checkReading } from "../lib/check.js";
 import { publicCards } from "../lib/deck.js";
 import { takeReading } from "../lib/rate-limit.js";
@@ -21,6 +22,7 @@ const good = () => ({
     "Next time a strong feeling arrives, pause and ask what color it has taken on.",
     "Notice one person whose response to you this week felt steady and safe.",
   ],
+  carry: "Which feeling of yours arrives in disguise most often, and what would it say without the costume?",
 });
 
 const mutate = (fn) => { const r = good(); fn(r); return checkReading(r, spread); };
@@ -34,11 +36,18 @@ test("structure: four sections in reading order and exactly three actions", () =
   assert.ok(mutate((r) => r.sections.reverse()).includes("sections"));
   assert.ok(mutate((r) => r.actions.push("A fourth action.")).includes("actions"));
   assert.ok(mutate((r) => { r.title = " "; }).includes("shape"));
+  assert.ok(mutate((r) => { delete r.carry; }).includes("shape"));
   assert.deepEqual(checkReading(null, spread), ["shape"]);
 });
 
-test("length: whole reading under 300 words and actions under 25 words", () => {
-  assert.ok(mutate((r) => { r.opening = "word ".repeat(200); }).includes("length"));
+test("length: whole reading under 350 words, actions and the carry question under 25 words", () => {
+  const total = (r) => [r.title, r.opening, ...r.sections.map((s) => s.text), ...r.actions, r.carry].join(" ").split(/\s+/).length;
+  const pad = (r, n) => { r.opening += " word".repeat(n - total(r)); };
+  assert.deepEqual(mutate((r) => pad(r, 349)), []);
+  assert.ok(mutate((r) => pad(r, 350)).includes("length"));
+  assert.ok(mutate((r) => { r.carry = "Why ".repeat(25).trim() + "?"; }).includes("carry-length"));
+  assert.ok(mutate((r) => { r.carry = "Think about who taught you that."; }).includes("carry-question"));
+  assert.ok(mutate((r) => { r.carry = "What did “enough” mean in your house?"; }).includes("quotes"));
   assert.ok(mutate((r) => { r.actions[0] = "word ".repeat(25); }).includes("action-length"));
 });
 
@@ -59,14 +68,19 @@ test("each chosen card's avoid phrases are rejected, unless the phrase is a chos
   assert.deepEqual(checkReading(good(), spread), []);
 });
 
-test("only approved people, at most two of them", () => {
+test("only approved voices: up to three, at most one research voice", () => {
   assert.ok(mutate((r) => { r.opening = "John Bradshaw wrote about toxic shame."; }).includes("name"));
   assert.ok(mutate((r) => { r.opening = "Carl Rogers suggests acceptance comes first."; }).includes("name"));
   assert.ok(mutate((r) => { r.opening = "According to Alain de Botton, status matters."; }).includes("name"));
-  assert.deepEqual(mutate((r) => { r.opening = "June Tangney's idea is that shame focuses on the whole self."; }), []);
-  assert.ok(
-    mutate((r) => { r.opening = "June Tangney and Paul Gilbert both offer ideas here, and Brené Brown does too."; }).includes("attributions"),
-  );
+  assert.deepEqual(mutate((r) => { r.opening = "June Tangney's idea is that shame focuses on the whole self."; r.sections[3].text = "Someone let you down."; }), []);
+  // Two research voices (Neff is already in the reading) is one too many.
+  assert.ok(mutate((r) => { r.opening = "June Tangney's work distinguishes shame from guilt."; }).includes("attributions"));
+  // One research voice plus two perspective voices is allowed; a third perspective voice makes four.
+  assert.deepEqual(mutate((r) => { r.opening = "Søren Kierkegaard wrote about despair, and Epictetus noted our judgments."; }), []);
+  assert.ok(mutate((r) => { r.opening = "Kierkegaard wrote about despair, Epictetus about judgment, and Rumi about guests."; }).includes("attributions"));
+  // Carl Jung is approved from v0.3; a listed work may be named.
+  assert.deepEqual(mutate((r) => { r.sections[1].text = "Carl Jung described the shadow, the parts we disown."; r.sections[3].text = "Someone let you down."; }), []);
+  assert.deepEqual(mutate((r) => { r.opening = "The Waste Land offers an image of gathering fragments."; }), []);
   // Card names followed by a verb are not people.
   assert.deepEqual(mutate((r) => { r.sections[0].text = "The Lighthouse of Triumph suggests a small marker you can hold."; }), []);
 });
@@ -140,4 +154,13 @@ test("logged API errors never contain card IDs or names", async () => {
   const { scrub } = await import("../lib/reading.js");
   const out = scrub("output_config.format.schema: enum [worth-08, shame-13] invalid near The Shame Storm");
   assert.ok(!/worth-08|shame-13|Shame Storm/.test(out), out);
+});
+
+test("the voice example in the reading instructions passes every check", () => {
+  const doc = readFileSync(new URL("../stg-reading-instructions-v0.3.md", import.meta.url), "utf8");
+  const json = doc.slice(doc.indexOf("### An example of the voice")).match(/```json\n([\s\S]*?)```/)[1];
+  const example = JSON.parse(json);
+  const exampleSpread = resolveSpread(example.sections.map((s) => s.card_id));
+  assert.ok(exampleSpread);
+  assert.deepEqual(checkReading(example, exampleSpread), []);
 });
