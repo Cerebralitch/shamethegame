@@ -130,14 +130,14 @@ test("a 400 on the fallback request is retried once without fallbacks, then fall
       throw new Anthropic.BadRequestError(400, { type: "error", error: { type: "invalid_request_error", message: "fallbacks: not allowed" } }, "fallbacks: not allowed", new Headers()); } } },
     messages: { create: async (p) => { calls.push(["plain", p]); return ok; } },
   };
-  assert.deepEqual(await generate(spread, fake), good());
+  assert.deepEqual(await generate(spread, [], fake), good());
   assert.deepEqual(calls.map((c) => c[0]), ["beta", "plain"]);
   const plain = calls[1][1];
   assert.equal(plain.model, "claude-sonnet-5-5");
   assert.ok(!("fallbacks" in plain) && !("betas" in plain));
   assert.equal(plain.output_config.format.type, "json_schema");
   // Later calls on this instance skip the rejected beta request.
-  await generate(spread, fake);
+  await generate(spread, [], fake);
   assert.deepEqual(calls.map((c) => c[0]), ["beta", "plain", "plain"]);
 });
 
@@ -145,9 +145,9 @@ test("other API errors are not swallowed, and refusals return null", async () =>
   const { generate } = await import("../lib/reading.js");
   const Anthropic = (await import("@anthropic-ai/sdk")).default;
   const err = new Anthropic.AuthenticationError(401, { type: "error", error: { type: "authentication_error", message: "bad key" } }, "bad key", new Headers());
-  await assert.rejects(generate(spread, { beta: { messages: { create: async () => { throw err; } } }, messages: { create: async () => { throw err; } } }), Anthropic.AuthenticationError);
+  await assert.rejects(generate(spread, [], { beta: { messages: { create: async () => { throw err; } } }, messages: { create: async () => { throw err; } } }), Anthropic.AuthenticationError);
   const refusal = { stop_reason: "refusal", content: [] };
-  assert.equal(await generate(spread, { beta: { messages: { create: async () => refusal } }, messages: { create: async () => refusal } }), null);
+  assert.equal(await generate(spread, [], { beta: { messages: { create: async () => refusal } }, messages: { create: async () => refusal } }), null);
 });
 
 test("logged API errors never contain card IDs or names", async () => {
@@ -163,4 +163,26 @@ test("the voice example in the reading instructions passes every check", () => {
   const exampleSpread = resolveSpread(example.sections.map((s) => s.card_id));
   assert.ok(exampleSpread);
   assert.deepEqual(checkReading(example, exampleSpread), []);
+});
+
+test("the retry tells the model which rules the first draft broke, without the draft", async () => {
+  const seen = [];
+  const gen = async (sp, problems) => { seen.push(problems); return seen.length === 1 ? { ...good(), opening: "word ".repeat(400) } : good(); };
+  assert.ok((await createReading(spread, gen)).reading);
+  assert.deepEqual(seen, [[], ["length"]]);
+
+  const { retryNote } = await import("../lib/reading.js");
+  assert.equal(retryNote([]), "");
+  const note = retryNote(["length", "attributions"]);
+  assert.match(note, /under 350 words/);
+  assert.match(note, /at most one from the research list/);
+});
+
+test("the retry note reaches the model in the user message", async () => {
+  const { generate } = await import("../lib/reading.js");
+  let sent;
+  const ok = { stop_reason: "end_turn", content: [{ type: "text", text: JSON.stringify(good()) }] };
+  const fake = { beta: { messages: { create: async (p) => { sent = p; return ok; } } }, messages: { create: async (p) => { sent = p; return ok; } } };
+  await generate(spread, ["attributions"], fake);
+  assert.match(sent.messages[0].content, /The Lighthouse of Triumph[\s\S]*rejected by the app's automatic checks[\s\S]*research list/);
 });
