@@ -8,7 +8,7 @@ This folder holds everything for the build:
 - `cards/` holds the 28 full-resolution card masters, named by card ID. The web-ready versions (cropped, WebP) are already in `frontend/img/cards/`; use those.
 - `splash.png`, `welcome-bg.png` and `button-begin.png` are full-resolution masters; web-ready WebP versions are in `frontend/img/`.
 - `stg-reading-instructions-v0.3.md` is the AI reading prompt. The server sends it with the four chosen cards' data and expects the JSON format it describes.
-- `STG Welcome and Support Copy v0.3 2026-10-28.md` is the final text for the Welcome screen, About & Support page and the line under every reading.
+- `STG Welcome and Support Copy v0.4 2026-10-28.md` is the final text for the Welcome screen, About page, Privacy & Support page and the line under every reading.
 - `STG Decisions Log.md` records decisions already made. Don't reopen them.
 
 **`frontend/` is the design source of truth.** It is a working front end: `frontend/index.html` already has the splash, Welcome, spread builder, card info sheet, reading screen and About & Support, using the final optimized art in `frontend/img/` and the approved card copy. Open it in a browser to see exactly how the app should look and behave. Build the app from it: keep its layout, styling, art and copy, and add the server, the AI reading and the reading layout to it.
