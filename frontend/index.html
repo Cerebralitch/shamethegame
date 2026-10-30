@@ -181,6 +181,7 @@ button:focus-visible,label:focus-within{outline:2px solid var(--gilt);outline-of
 .ab h3{font:600 18px/1.2 var(--display);letter-spacing:.06em;margin:14px 0 0;color:var(--silver)}
 .ab p{margin:0}
 .ab-intro{font-size:21px;line-height:1.4;color:var(--bone)}
+.ab-thorns{display:block;align-self:center;width:70%;height:auto;margin:10px 0}
 .ab-sign{font-style:italic;color:var(--pewter)}
 .ab-portrait{margin:8px 0 0;display:flex;flex-direction:column;gap:10px}
 .ab-portrait img{width:100%;height:auto;border-radius:6px;display:block}
@@ -212,12 +213,15 @@ button:focus-visible,label:focus-within{outline:2px solid var(--gilt);outline-of
 .ht li{padding-left:14px;border-left:2px solid var(--line)}
 .ht li b{font-weight:500;color:#fff}
 .ht .begin{align-self:center;margin-top:4px}
-.cross{display:flex;flex-direction:column;align-items:center;gap:4px;padding:0}
-.cross-row{display:flex;justify-content:center;gap:8px}
-.cross .face{width:34px;aspect-ratio:540/932;border:1px dashed var(--line);border-radius:4px;background:rgba(255,255,255,.03)}
-.cross .lbl{font:600 9.5px/1 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--pewter)}
-.cross-cap{font-size:14px;line-height:1.2;color:var(--pewter);margin-bottom:4px}
-.cross-cap .role,.slot .role{color:var(--gilt)}
+/* The spread on How to Play: one row of four, like the builder's rail */
+.ht-rail{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:8px;row-gap:5px}
+.ht-rail .face{aspect-ratio:540/932;border:1px dashed var(--line);border-radius:5px;background:rgba(255,255,255,.03)}
+.ht-rail .lbl{font:600 9.5px/1 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--pewter);text-align:center;white-space:nowrap}
+.ht-rail .role{font:italic 12px/1 var(--body);text-align:center;white-space:nowrap}
+.ht-rail .span2{grid-column:span 2}
+/* Narrow phones: tighten the slot labels so ACTIVATION stays on one line in its column */
+@media (max-width:360px){.slot .lbl,.ht-rail .lbl{font-size:9px;letter-spacing:.07em}}
+.ht-rail .role,.slot .role{color:var(--gilt)}
 .rf{padding:24px 16px 48px;display:flex;flex-direction:column;gap:16px}
 .rf h2{font:600 30px/1.1 var(--display);margin:0}
 .page-logo{display:block;width:min(60vw,260px);height:auto;margin:0 auto}
@@ -287,13 +291,10 @@ button:focus-visible,label:focus-within{outline:2px solid var(--gilt);outline-of
       <img class="page-logo" src="img/logo.webp" alt="Shame: The Game" width="900" height="373">
       <h2>How to Play</h2>
       <p class="ht-lead">Use the strength of your Worth card to look at your Shame and Activation cards from a new angle.</p>
-      <div class="cross" role="img" aria-label="The spread: one Worth card at the top (pick one, your essence), two Shame cards side by side in the middle (pick two, your shame), and one Activation card at the bottom (pick one, your trigger).">
-        <div class="cross-row"><span class="face"></span></div>
-        <div class="cross-cap"><span class="lbl">Worth</span> · <i>pick one</i> · <i class="role">your essence</i></div>
-        <div class="cross-row"><span class="face"></span><span class="face"></span></div>
-        <div class="cross-cap"><span class="lbl">Shame</span> · <i>pick two</i> · <i class="role">your shame</i></div>
-        <div class="cross-row"><span class="face"></span></div>
-        <div class="cross-cap"><span class="lbl">Activation</span> · <i>pick one</i> · <i class="role">your trigger</i></div>
+      <div class="ht-rail" role="img" aria-label="The spread, in one row: a Worth card (your essence), two Shame cards (your shame) and an Activation card (your trigger).">
+        <span class="face"></span><span class="face"></span><span class="face"></span><span class="face"></span>
+        <span class="lbl">Worth</span><span class="lbl">Shame</span><span class="lbl">Shame</span><span class="lbl">Activation</span>
+        <span class="role">your essence</span><span class="role span2">your shame</span><span class="role">your trigger</span>
       </div>
       <section>
         <h3>Step 1 · Know the three kinds of cards</h3>
@@ -370,6 +371,7 @@ button:focus-visible,label:focus-within{outline:2px solid var(--gilt);outline-of
       <!-- Text from "STG Welcome and Support Copy v0.4 2026-10-28.md", S5a. -->
       <h2>The Story Behind Shame: The Game</h2>
       <p class="ab-intro">Shame: The Game is a card deck for self-reflection, built on image, metaphor and story. This is where it came from.</p>
+      <img class="thorns ab-thorns" src="img/thorns.webp" alt="" width="521" height="83">
       <p>For more than three decades, I grappled with shame. It wove its way through my thoughts, my feelings and my choices. Over the years I found ways to cope, and some helped for a while. But I kept patching the tire without ever looking at the road that kept puncturing it.</p>
       <p>Things shifted when I started looking at my experience through images. When shame had a shape (an octopus, a cage, a cloak), I could look at it instead of only feeling it. Metaphor gave me enough distance to get curious. That's where the cards began.</p>
       <p>Two bodies of thought shaped the deck most. Brené Brown's research on shame resilience showed me how much depends on naming shame and saying it to someone who responds with empathy. Douglas Hofstadter's argument that analogy sits at the core of how we think helped me understand why a picture can reach what an explanation can't.</p>
