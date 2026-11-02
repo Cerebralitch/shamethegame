@@ -154,9 +154,13 @@ button:focus-visible,label:focus-within{outline:2px solid var(--gilt);outline-of
 .spread .face img{width:100%;height:100%;object-fit:contain;display:block}
 .spread .ph{padding:8px}.spread .ph .n{font-size:11px}.spread .ph .p{display:none}
 .spread .lbl{font:600 9.5px/1 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--pewter);text-align:center;margin-top:5px}
-.support{font-size:15px;line-height:1.45;color:var(--bone);border-top:1px solid var(--line);padding-top:16px}
+.support{font-size:15px;line-height:1.45;color:var(--bone)}
+.rd-thorns{display:block;align-self:center;width:70%;height:auto;margin:18px 0 0}
 .support a,.qa-988 a{color:var(--bone);text-decoration:underline;text-decoration-color:var(--pewter);text-underline-offset:3px}
 .actions{display:flex;flex-direction:column;align-items:center;gap:8px}
+.again{font:600 17px/1 var(--display);letter-spacing:.12em;color:var(--bone);padding:12px 20px}
+.again:active{color:var(--gilt)}
+.rd-cards{display:block;width:85%;height:auto;margin:22px 0 12px;pointer-events:none;user-select:none}
 .note{font:500 13px var(--ui);color:var(--gilt);min-height:1.2em;text-align:center}
 .rd-body{display:flex;flex-direction:column;gap:18px}
 .rd-opening{margin:0;font-size:18px;line-height:1.5}
@@ -339,11 +343,13 @@ button:focus-visible,label:focus-within{outline:2px solid var(--gilt);outline-of
       <div><div class="eyebrow">Your reading</div><h2 id="rdTitle">Your four cards</h2></div>
       <div class="spread" id="spread"></div>
       <div class="rd-body" id="rdBody" aria-live="polite"></div>
+      <img class="thorns rd-thorns" src="img/thorns.webp" alt="" width="521" height="83">
       <p class="support">This reading is AI-generated reflection, not therapy. If something here stirred up more than you expected, the 988 Suicide &amp; Crisis Lifeline is free, confidential and open 24/7. <a href="tel:988">Call</a> or <a href="sms:988">text</a> 988, or chat at <a href="https://988lifeline.org" target="_blank" rel="noopener">988lifeline.org</a>. Outside the US, find a local line at <a href="https://findahelpline.com" target="_blank" rel="noopener">findahelpline.com</a>.</p>
       <div class="actions">
         <button class="metal" id="share" hidden>Share</button>
         <div class="note" id="shareNote" role="status"></div>
-        <button class="textbtn" id="again">New reading</button>
+        <button class="again" id="again">New reading</button>
+        <img class="rd-cards" src="img/cards-flat.webp" alt="" width="984" height="117">
       </div>
     </div>
   </section>
